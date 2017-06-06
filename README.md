@@ -1,2 +1,2 @@
-# multichain_gemeenteapp
-App voor de gemeente in multuchain netwerk
+# NodeJS Server Gemeente
+NodeJS Server voor de Gemeente applicatie
