@@ -12,8 +12,14 @@ router.get('/', function(req, res, next) {
 });
 
 /* Create Stream */
-function createStream(name) {
-    multichain.create(name);
-}
+router.post('/', function(req, res, next){
+    multichain.create({type: 'stream', name: req.body.name, open: true}, (err, name) => {
+        if(err) {
+            throw err;
+        }
+        console.log(name);
+    })
+        res.render('streamsHome');
+});
 
-module.exports=router
+module.exports=router   
