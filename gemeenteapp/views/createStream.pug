@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  h1= title
+  p
+  form(method='POST' action='')
+    div.form-group
+      label(for='name') Naam:
+      br
+      input(type='text', placeholder='stream' name='name')
+    button(type='submit') Submit

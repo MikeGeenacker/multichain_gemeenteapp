@@ -8,6 +8,9 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var about = require('./routes/about');
+var stream = require('./routes/stream');
+var streamHome = require('./routes/streamsHome');
+var streamCreate = require('./routes/createStream');
 
 var app = express();
 
@@ -26,6 +29,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/users', users);
 app.use('/about', about);
+app.use('/stream', stream);
+app.use('/streamHome',streamHome);
+app.use('/createStream', streamCreate);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -7,14 +7,16 @@ var multichain = require("multichain-node")({
     pass: "uPc6civWyGanmrmAgn3Tn9pPgYR3noMQt9nPMun9GeD"
 });
 
-/* GET users listing. */
+
+/*GET streams*/
 router.get('/', function(req, res, next) {
- multichain.getInfo((err, info) => {
-    if(err){
-        throw err;
-    }
-    res.render('about', {chainname : info.chainname, version: info.version});
-})
+    multichain.listStreams((err, streams) => {
+        if(err){
+            throw err;
+        }
+        console.log(streams);
+        res.render('stream', {title: 'Streams', nameList: streams});
+    })
 });
 
 module.exports = router;

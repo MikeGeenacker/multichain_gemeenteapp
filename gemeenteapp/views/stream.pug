@@ -1,0 +1,10 @@
+extends layout
+
+block content
+    h1= title
+    p Streams:
+        ul
+        each val in nameList
+            li= val.name 
+        else
+            li Er zijn momenteel geen streams beschikbaar!

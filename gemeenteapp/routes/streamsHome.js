@@ -8,13 +8,8 @@ var multichain = require("multichain-node")({
 });
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
- multichain.getInfo((err, info) => {
-    if(err){
-        throw err;
-    }
-    res.render('about', {chainname : info.chainname, version: info.version});
-})
+router.get('/', function(req, res, next) { 
+    res.render('streamsHome', {title: 'Stream beheer'});
 });
 
 module.exports = router;
