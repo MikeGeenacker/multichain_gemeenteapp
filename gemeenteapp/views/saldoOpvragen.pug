@@ -1,0 +1,23 @@
+//Created by tim_h on 7-6-2017
+block content
+
+  .main.container
+    .row
+      .col-md-6.col-md-offset-3
+        h1.display-4.m-b-2 Saldo Opvragen
+
+        // register form
+        form(method='POST' action='/saldoOpvragen')
+          div.form-group
+            label(for='address') Wallet:
+            input#address.form-control(type='text', placeholder='Adres' name='address')
+          button.btn.btn-primary(type='submit') Opvragen
+
+block content
+  if walletaddress != null
+    P Wallet #{walletaddress} <b> bevat #{quantity} #{asset}
+  else
+    P  #{err}
+
+
+
