@@ -1,0 +1,25 @@
+extends layout
+block content
+  h1 Transaction
+  form(method='POST' action='../transaction')
+    div.form-group
+      label(for='senderAddress') Sender address:
+      input#senderAddress.form-control(type='text', placeholder='This address will be sending' name='senderAddress')
+    div.form-group
+      label(for='receiverAddress') Receiver address:
+      input#receiverAddress.form-control(type='text', placeholder='This address will be receiving' name='receiverAddress')
+    div.form-group
+      label(for='amountToSend') Amount to send:
+      input#amountToSend.form-control(type='text', placeholder='Amount of corrency to send' name='amountToSend')
+    button.btn.btn-primary(type='submit') Send currency
+
+  if transactionTry == true
+    h1 Transaction result
+    if result
+      p Transaction complete,
+      p Sent #{amount} SocialCoins
+      p From: #{sender}
+      p To: #{receiver}
+    else
+      p Transaction failed,
+      p Check addresses, balances and permissions before trying again.
