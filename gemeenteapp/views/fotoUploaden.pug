@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  h1 Foto uploaden
+  if uploadTry==false
+    form( action="/fotoUploaden" method="POST")
+      p Selecteer hier uw foto om te uploaden:
+      label(for="fileToUpload")
+      input#fileToUpload( type="file" name="fileToUpload")
+      label(for="fromAddress")
+      input#fromAddress( type="text" name=fromAddress)
+      br
+      br
+      input( type="submit" value="Uploaden")
+  else
+    if uploadSucces
+      p Uploaden is gelukt.
+    else
+      p Uploaden is mislukt.
