@@ -10,7 +10,7 @@ block content
       input#receiverAddress.form-control(type='text', placeholder='This address will be receiving' name='receiverAddress')
     div.form-group
       label(for='amountToSend') Amount to send:
-      input#amountToSend.form-control(type='text', placeholder='Amount of corrency to send' name='amountToSend')
+      input#amountToSend.form-control(type='integer', placeholder='Amount of corrency to send' name='amountToSend')
     button.btn.btn-primary(type='submit') Send currency
 
   if transactionTry == true
