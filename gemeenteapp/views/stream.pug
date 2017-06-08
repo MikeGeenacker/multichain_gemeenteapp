@@ -1,10 +1,18 @@
 extends layout
 
 block content
-    h1= title
-    p Streams:
-        ul
-        each val in nameList
-            li= val.name 
-        else
-            li Er zijn momenteel geen streams beschikbaar!
+    h1= title   
+
+    table
+        thead
+            tr
+                th Streams
+                th Gebeurtenissen
+                th Publishers
+        tbody
+            each val in nameList
+                tr
+                    td
+                        a(href='/streamDetails?name='+ val.name) #{val.name}
+                    td= val.items
+                    td= val.publishers

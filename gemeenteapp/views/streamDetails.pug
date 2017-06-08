@@ -1,0 +1,22 @@
+extends layout
+
+block content
+    h1 #{title} van: #{streamName}
+    each val in streamInf
+        l Streamnaam: #{val.name}
+        br
+        l Gemaakt door: #{val.createtxid}
+        br
+    h3 Streampublisher(s)
+    each val in streamPublisher
+        l #{val.publisher}
+        br
+    h3 StreamItem(s)
+    each val in streamItems
+        p
+            l Key: #{val.key}
+            br
+            l Publisher: #{val.publishers}
+            br  
+            l Beschrijving: #{val.data}
+            br

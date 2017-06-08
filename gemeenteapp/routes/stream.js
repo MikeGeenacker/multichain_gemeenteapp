@@ -8,13 +8,12 @@ var multichain = require("multichain-node")({
 });
 
 
-/*GET streams*/
+/*GET stream names*/
 router.get('/', function(req, res, next) {
     multichain.listStreams((err, streams) => {
-        if(err){
+        if(err) {
             throw err;
         }
-        console.log(streams);
         res.render('stream', {title: 'Streams', nameList: streams});
     })
 });
