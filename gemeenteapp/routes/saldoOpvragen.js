@@ -14,14 +14,19 @@ router.get('/', function(req, res, next) {
 
 router.post('/', function(req, res, next) {
     multichain.getAddressBalances({address : req.body.address, minconf: 0},(err, address) => {
+        var saldo = address[0].qty;
+        var percentageschuld = parseInt((saldo/1000) *100);
+        console.log(percentageschuld);
         if(err || address.length <= 0){
             res.render('saldoOpvragen', {err : 'Wallet bevat geen saldo of wallet bestaat niet.'});
         }
         else{
-            res.render('saldoOpvragen', {asset : address[0].name, quantity : address[0].qty, walletaddress: req.body.address});
+            res.render('saldoOpvragen', {asset : address[0].name, quantity : address[0].qty, walletaddress: req.body.address, percentage: percentageschuld});
         }
 
     })
 });
+
+
 
 module.exports = router;

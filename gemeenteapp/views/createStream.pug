@@ -1,11 +1,80 @@
-extends layout
+extends ../node_modules/pug-bootstrap/_bootstrap.pug
 
-block content
-  h1= title
-  p
-  form(method='POST' action='/createStream')
-    
-      label(for='name') Naam:
-      br
-      input(type='text', placeholder='stream' name='name')
-      button(type='submit') Submit
+block body
+    #wrap
+        nav.navbar.navbar-default
+            .container-fluid
+                // Brand and toggle get grouped for better mobile display
+                .navbar-header
+                    button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1', aria-expanded='false')
+                        span.sr-only Toggle navigation
+                        span.icon-bar
+                        span.icon-bar
+                        span.icon-bar
+                    a.navbar-brand(href='#')
+                        img.navar-brand-logo(alt='Brand', src='http://maba-online.nl/socialcoin/logosocialcoin.png')
+                // Collect the nav links, forms, and other content for toggling
+                #bs-example-navbar-collapse-1.collapse.navbar-collapse
+                    ul.nav.navbar-nav
+                        li.dropdown.active
+                            a.dropdown-toggle(href='streams', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+                                | Stream
+                                span.caret
+                            ul.dropdown-menu
+                                li.active
+                                    a(href='/createStream') Stream aanmaken
+                                span.sr-only (current)
+                                li
+                                    a(href='/stream') Streams bekijken
+                        span.sr-only (current)
+                        li.dropdown
+                            a.dropdown-toggle(href='streams', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+                                | Taken
+                                span.caret
+                            ul.dropdown-menu
+                                li
+                                    a(href='#') Taak aanmaken
+                                li
+                                    a(href='#') Taken bekijken
+                    ul.nav.navbar-nav.navbar-right
+                        li
+                            a(href='/') Home
+                        li.active
+                            a(href='/gemeente') Gemeente
+                        span.sr-only (current)
+                        li
+                            a(href='/schuldhebbende') Schuldhebbende
+
+        .container.theme-showcase(role='main')
+            // Main jumbotron for a primary marketing message or call to action
+            .page-header
+                h1
+                    | SocialCoin | Stream aanmaken
+            .row
+                .col-md-7
+                    form(method='post' action='/createStream')
+                        .input-group
+                            input.form-control(type='text', placeholder='Stream', name='name')
+                            span.input-group-btn
+                                button.btn.btn-default(type='submit') Stream aanmaken
+        footer.stickyfooter
+            .container
+                .row.footertekst
+                    .col-md-4
+                        p © SocialCoin / ISE-Projectgroep9
+                    .col-md-4
+                        ul.footeropsomming
+                            li
+                                strong Over SocialCoin
+                            li
+                                a(href='http://socialcoin.nl', target='_blank') SocialCoin
+                            li
+                                a(href='http://socialcoin.nl', target='_blank') Doel
+                    .col-md-4
+                        ul.footeropsomming
+                            li
+                                strong Over ISE-Projectgroep 9
+                            li
+                                a(href='http://socialcoin.nl', target='_blank') De Projectgroep
+                            li
+                                a(href='http://socialcoin.nl', target='_blank') De Projectgroep

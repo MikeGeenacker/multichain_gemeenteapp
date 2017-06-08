@@ -6,6 +6,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
+var gemeente = require('./routes/gemeente');
+var schuldhebbende = require('./routes/schuldhebbende')
 var users = require('./routes/users');
 var about = require('./routes/about');
 var saldoOpvragen = require('./routes/saldoOpvragen');
@@ -30,6 +32,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
+app.use('/gemeente', gemeente);
+app.use('/schuldhebbende', schuldhebbende);
 app.use('/users', users);
 app.use('/about', about);
 app.use('/saldoOpvragen', saldoOpvragen);
@@ -38,6 +42,7 @@ app.use('/streamHome',streamHome);
 app.use('/createStream', streamCreate);
 app.use('/createWallet', createWallet);
 app.use('/transaction', transaction);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

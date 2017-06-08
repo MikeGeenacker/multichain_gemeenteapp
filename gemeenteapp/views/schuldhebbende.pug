@@ -16,16 +16,18 @@ block body
                 // Collect the nav links, forms, and other content for toggling
                 #bs-example-navbar-collapse-1.collapse.navbar-collapse
                     ul.nav.navbar-nav
-
+                        li
+                            a(href='/saldoOpvragen') Saldo
+                        li
+                            a(href='#') Taken
                     ul.nav.navbar-nav.navbar-right
-                        li.active
-                            a(href='/')
-                                | Home
-                                span.sr-only (current)
+                        li
+                            a(href='/') Home
                         li
                             a(href='/gemeente') Gemeente
-                        li
+                        li.active
                             a(href='/schuldhebbende') Schuldhebbende
+                        span.sr-only (current)
 
                 // /.navbar-collapse
             // /.container-fluid
@@ -42,9 +44,9 @@ block body
                 h3
                     | Maak uw keuze
                 .col-md-3
-                    a.btn.btn-lg.btn-primary.maakuwkeuze(href='/gemeente') Gemeente
+                    a.btn.btn-lg.btn-primary.maakuwkeuze(href='/saldoOpvragen') Saldo
                 .col-md-3
-                a.btn.btn-lg.btn-primary.maakuwkeuze(href='/schuldhebbende') Schuldhebbende
+                a.btn.btn-lg.btn-primary.maakuwkeuze(href='#') Taken
 
 
             .col-md-5
