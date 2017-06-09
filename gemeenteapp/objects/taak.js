@@ -44,7 +44,6 @@ var taak = function() {
 				// iterating klaar
 				console.log(JSON.stringify(taken));
 				taken.push(historyNaarTaak(taken));
-				callback(taken);
 			});
 			// Taken opzoeken en volgens ons 'model' invullen
 			/*let taken = [];
@@ -58,6 +57,7 @@ var taak = function() {
 			}*/
 //			taken.push(historyNaarTaak(taken));
 //			callback(taken);
+			callback(taken);
 		})
 	}
 
