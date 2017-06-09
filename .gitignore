@@ -58,3 +58,4 @@ typings/
 .env
 .idea/
 multichain_gemeenteapp.iml
+*.swp

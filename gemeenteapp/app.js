@@ -16,6 +16,7 @@ var streamHome = require('./routes/streamsHome');
 var streamCreate = require('./routes/createStream');
 var createWallet = require('./routes/createWallet');
 var transaction = require('./routes/transaction');
+var takentest = require('./routes/takentest');
 
 var app = express();
 
@@ -42,6 +43,7 @@ app.use('/streamHome',streamHome);
 app.use('/createStream', streamCreate);
 app.use('/createWallet', createWallet);
 app.use('/transaction', transaction);
+app.use('/takentest', takentest);
 
 
 // catch 404 and forward to error handler
