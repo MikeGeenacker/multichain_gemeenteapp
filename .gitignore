@@ -57,5 +57,13 @@ typings/
 # dotenv environment variables file
 .env
 .idea/
+.vscode
 multichain_gemeenteapp.iml
+<<<<<<< HEAD
 *.swp
+=======
+
+# Dependencies stored in package(-lock)
+gemeenteapp/package.json
+gemeenteapp/package-lock.json
+>>>>>>> aeb92182d8b2b07afd2076f0f6cabb86650aa2e8
