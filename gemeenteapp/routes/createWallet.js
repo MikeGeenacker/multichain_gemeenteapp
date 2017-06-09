@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
         throw err;
       }
       var address = addressInfo;
-      var permission = "connect,receive";
+      var permission = "connect,receive"; // add send, create label, revoke send
       multichain.grant({addresses : address, permissions : permission},(err) => {
         if(err){
           throw err;

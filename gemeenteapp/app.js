@@ -17,7 +17,11 @@ var streamCreate = require('./routes/createStream');
 var streamDetails = require ('./routes/streamDetails');
 var createWallet = require('./routes/createWallet');
 var transaction = require('./routes/transaction');
+<<<<<<< HEAD
+var walletBekijken = require('./routes/walletBekijken');
+=======
 var takentest = require('./routes/takentest');
+>>>>>>> 04b017894b24a3090cde57d7e5e9a86ee5556c56
 
 var app = express();
 
@@ -45,8 +49,12 @@ app.use('/createStream', streamCreate);
 app.use('/streamDetails', streamDetails);
 app.use('/createWallet', createWallet);
 app.use('/transaction', transaction);
+<<<<<<< HEAD
+app.use('/walletBekijken', walletBekijken);
+=======
 app.use('/takentest', takentest);
 
+>>>>>>> 04b017894b24a3090cde57d7e5e9a86ee5556c56
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
