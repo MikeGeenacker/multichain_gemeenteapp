@@ -19,7 +19,7 @@ var taak = function() {
 			callback(info);
 		});
 	},
-	this.get = function(streamnaam, callback) {
+	this.get = function(streamnaam, callback2) {
 		multichain.listStreamItems({stream: streamnaam, verbose:false}, (err, items) => {
 			if(err)throw err;
 
@@ -33,17 +33,18 @@ var taak = function() {
 					_taak.data = new Buffer(item.data, 'hex').toString('utf8');
 					_taak.data = trimData(_taak.data);
 					_taak.data = JSON.parse(_taak.data)
-					_taak.timestamp = new Date(transaction.time);
+					_taak.data.timestamp = new Date(transaction.time);
+					console.log(JSON.stringify(transaction.time));
+					console.log(JSON.stringify(_taak.data.timestamp));
 					_taak = vormTaak(_taak.data);
-					console.log(JSON.stringify(_taak));
 					taken.push(_taak);
+					callback();
 				})
-				callback();
 			},
 			function(err) {
 				// iterating klaar
-				console.log(JSON.stringify(taken));
 				taken.push(historyNaarTaak(taken));
+				callback2(taken);
 			});
 			// Taken opzoeken en volgens ons 'model' invullen
 			/*let taken = [];
@@ -57,8 +58,8 @@ var taak = function() {
 			}*/
 //			taken.push(historyNaarTaak(taken));
 //			callback(taken);
-			callback(taken);
 		})
+
 	}
 
 }
@@ -90,6 +91,7 @@ function vormTaak(data) {
 		_taak.beloning = data.beloning;
 		_taak.status = data.status;
 		_taak.voortgang = data.voortgang;
+	  _taak.timestamp = data.timestamp;
 	return _taak;
 }
 module.exports = taak;
