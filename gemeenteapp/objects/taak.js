@@ -46,18 +46,6 @@ var taak = function() {
 				taken.push(historyNaarTaak(taken));
 				callback2(taken);
 			});
-			// Taken opzoeken en volgens ons 'model' invullen
-			/*let taken = [];
-			for(let i =0; i < items.length; i++) {
-				let _taak = {};
-				_taak.data = new Buffer(items[i].data, 'hex').toString('utf8');
-				_taak.data = trimData(_taak.data);
-				_taak.data = JSON.parse(_taak.data);
-				_taak = vormTaak(_taak.data);
-				taken.push(_taak);
-			}*/
-//			taken.push(historyNaarTaak(taken));
-//			callback(taken);
 		})
 
 	}
