@@ -54,6 +54,7 @@ block body
                 .col-md-7
                     ul.list-group
                     each val in nameList
-                        li.list-group-item= val.name
+                        li.list-group-item
+                            a(href='/streamDetails?name='+ val.name) #{val.name}
                     else
                         li.list-group-item Er zijn momenteel geen streams beschikbaar!
