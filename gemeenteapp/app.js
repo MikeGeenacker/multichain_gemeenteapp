@@ -18,6 +18,7 @@ var streamDetails = require ('./routes/streamDetails');
 var createWallet = require('./routes/createWallet');
 var transaction = require('./routes/transaction');
 var walletBekijken = require('./routes/walletBekijken');
+var walletBekijkenClean = require('./routes/walletBekijkenClean');
 var takentest = require('./routes/takentest');
 
 var app = express();
@@ -48,6 +49,7 @@ app.use('/createWallet', createWallet);
 app.use('/transaction', transaction);
 app.use('/walletBekijken', walletBekijken);
 app.use('/takentest', takentest);
+app.use('/walletBekijken', walletBekijkenClean);
 
 
 // catch 404 and forward to error handler

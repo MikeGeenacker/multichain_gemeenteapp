@@ -17,7 +17,8 @@ router.get('/', function(req, res, next) {
       // var j;
       // console.log(addresses);
       // console.log(addresses[0].address);
-      var addressPermissions = new Array(addresses.length).fill("");
+      // var addressPermissions= new Array(addresses.length).fill("");
+      var addressPermissions;
       // console.log(addressPermissions);
       for(var i = 0; i<addresses.length; i++){
         // console.log(addresses[i]);
@@ -35,15 +36,17 @@ router.get('/', function(req, res, next) {
           // console.log(addressPermissionsListed.length);
           console.log(addressPermissionsListed);
           for(var j = 0; j<addressPermissionsListed.length; j++){
-            if(j!=0){
-              addressPermissions[i] +=", ";
-              addressPermissions[i] += addressPermissionsListed[j].type;
-            }else{
-              addressPermissions[i] += addressPermissionsListed[j].type;
+            if(typeof(addressPermissionsListed[j]!="undefined")) {
+              if(j!=0){
+                addressPermissions[i] +=", ";
+                addressPermissions[i] += addressPermissionsListed[j].type;
+              }else{
+                addressPermissions[i] += addressPermissionsListed[j].type;
+              }
             }
           }
           // addressPermissions[i] += addressPermissionsListed[i].type;
-          // console.log(addressPermissions);
+          console.log(addressPermissions);
           // console.log(addressPermissions[i]);
           // console.log(addresses[i].address);
           // console.log(addressPermissionsListed[i].type);

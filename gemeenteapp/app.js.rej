@@ -1,0 +1,9 @@
+diff a/gemeenteapp/app.js b/gemeenteapp/app.js	(rejected hunks)
+@@ -39,6 +39,7 @@
+ app.use('/createStream', streamCreate);
+ app.use('/createWallet', createWallet);
+ app.use('/transaction', transaction);
++app.use('/walletBekijken', walletBekijken);
+ 
+ // catch 404 and forward to error handler
+ app.use(function(req, res, next) {
