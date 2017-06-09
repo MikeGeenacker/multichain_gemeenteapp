@@ -33,7 +33,7 @@ var taak = function() {
 					_taak.data = new Buffer(item.data, 'hex').toString('utf8');
 					_taak.data = trimData(_taak.data);
 					_taak.data = JSON.parse(_taak.data);
-                    _taak.data.timestamp = new Date(transaction.time*1000);
+					_taak.data.timestamp = new Date(transaction.time*1000);
 					console.log(JSON.stringify(transaction.time));
 					console.log(JSON.stringify(_taak.data.timestamp));
 					_taak = vormTaak(_taak.data);
@@ -46,20 +46,14 @@ var taak = function() {
 				taken.push(historyNaarTaak(taken));
 				callback2(taken);
 			});
-			// Taken opzoeken en volgens ons 'model' invullen
-			/*let taken = [];
-			for(let i =0; i < items.length; i++) {
-				let _taak = {};
-				_taak.data = new Buffer(items[i].data, 'hex').toString('utf8');
-				_taak.data = trimData(_taak.data);
-				_taak.data = JSON.parse(_taak.data);
-				_taak = vormTaak(_taak.data);
-				taken.push(_taak);
-			}*/
-//			taken.push(historyNaarTaak(taken));
-//			callback(taken);
 		})
 
+	},
+	this.create = function(taak, callback) {
+		//TODO deze functie maken
+		
+
+		callback():
 	}
 
 }

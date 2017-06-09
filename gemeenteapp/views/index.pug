@@ -25,7 +25,10 @@ block body
                         li
                             a(href='/gemeente') Gemeente
                         li
-                            a(href='/schuldhebbende') Schuldhebbende
+                            if walletadres != null
+                                a(href='/schuldhebbende') Schuldhebbende
+                            else
+                                a(type='button', data-toggle='modal', data-target='#myModal') Schuldhebbende
 
                 // /.navbar-collapse
             // /.container-fluid
@@ -41,17 +44,45 @@ block body
             .col-md-7
                 h3
                     | Maak uw keuze
-                .col-md-3
+                .col-md-6
                     a.btn.btn-lg.btn-primary.maakuwkeuze(href='/gemeente') Gemeente
-                .col-md-3
-                a.btn.btn-lg.btn-primary.maakuwkeuze(href='/schuldhebbende') Schuldhebbende
+                .col-md-6
+                    if walletadres != null
+                        a.btn.btn-lg.btn-primary.maakuwkeuze(href='/schuldhebbende') Schuldhebbende
+                    else
+                        button.btn.btn-primary.btn-lg.maakuwkeuze(type='button', data-toggle='modal', data-target='#myModal') Schuldhebbende
 
-
+                // Modal
+                #myModal.modal.fade(role='dialog')
+                    .modal-dialog
+                        // Modal content
+                        .modal-content
+                            .modal-header
+                                button.close(type='button', data-dismiss='modal') ×
+                                h4.modal-title Schuldhebbende
+                            .modal-body
+                                form(method='POST' action='/schuldhebbende')
+                                    div.form-group
+                                        label(for='address') Wallet:
+                                        input#address.form-control(type='text', placeholder='Adres' name='walletaddress')
+                                    div.modal-footer
+                                        button.btn.btn-primary(type='button', data-dismiss='modal') Annuleren
+                                        button.btn.btn-primary(type='submit') Opslaan
             .col-md-5
                 h3
                     | Nieuws
-                script(type='text/javascript', src='https://feed.mikle.com/js/fw-loader.js', data-fw-param='31938/')
-                // end feedwind code
+                .media
+                    .media-left
+                        span.glyphicon.glyphicon-th-large
+                    .media-body
+                        h4.media-heading
+                            strong Nieuwe taak:
+                            |  Arnhem
+                        p
+                            span.glyphicon.glyphicon-minus Test
+                            br
+                            span.glyphicon.glyphicon-time 10-juli-2017
+
 
     footer.stickyfooter
         .container

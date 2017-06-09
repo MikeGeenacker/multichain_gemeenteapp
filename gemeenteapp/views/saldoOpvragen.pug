@@ -28,6 +28,10 @@ block body
             li.active
               a(href='/schuldhebbende') Schuldhebbende
             span.sr-only (current)
+            li
+              form(method='post', action='/')
+                button.uitloggenknop(type='submit')
+                  a.uitloggenknoplink Uitloggen
 
     .container.theme-showcase(role='main')
       // Main jumbotron for a primary marketing message or call to action
@@ -35,29 +39,33 @@ block body
         h1
           | SocialCoin | Saldo opvragen
       .row
-        .col-md-7
-          h1 Saldo Opvragen
-
-          // register form
-          form(method='POST' action='/saldoOpvragen')
-            div.form-group
-              label(for='address') Wallet:
-              input#address.form-control(type='text', placeholder='Adres' name='address')
-            button.btn.btn-primary(type='submit') Opvragen
-          br
+        .col-md-6
           if walletaddress != null
-            .col-md-12
-              P Wallet #{walletaddress} <b> bevat #{quantity} #{asset}
-              P Wallet #{percentage} <b> bevat #{quantity} #{asset}
-                .circle-wrapper
-                  //
-                    put the progress value You want
-                    in (data-value) attribute
-                  .svg.svg1.col-md-6.col-sm-6(data-value=''+ parseInt(percentage) +'', data-lang='Afgelost')
-                    svg(width='200px', height='200px', viewbox='0 0 80 80')
-                      path.load-bg.cir1(d='M40,10C57.351,10,71,23.649,71,40.5S57.351,71,40.5,71 S10,57.351,10,40.5S23.649,10,40.5,10z')
-                      path#load-line1.load-circle(style='stroke-dashoffset: 192.6168975830078px; stroke-dasharray: 192.6168975830078px;', d='M40,10C57.351,10,71,23.649,71,40.5S57.351,71,40.5,71 S10,57.351,10,40.5S23.649,10,40.5,10z')
-          else
+            ul.list-group
+              li.list-group-item
+                span
+                strong
+                  |     Wallet
+                i
+                  |     #{walletaddress}
+                li.list-group-item
+                  span
+                  strong
+                    |     Saldo
+                  i
+                    |     SC #{quantity}
+
+
+
+              //P Wallet #{walletaddress} <b> bevat #{quantity} #{asset}
+              //P Wallet #{percentage} <b> bevat #{quantity} #{asset}
+        .col-md-6
+          .circle-wrapper
+            .svg.svg1.col-md-6.col-sm-6(data-value=''+ parseInt(percentage) +'', data-lang='Afgelost')
+              svg(width='250px', height='250px', viewbox='0 0 80 80')
+                path.load-bg.cir1(d='M40,10C57.351,10,71,23.649,71,40.5S57.351,71,40.5,71 S10,57.351,10,40.5S23.649,10,40.5,10z')
+                path#load-line1.load-circle(style='stroke-dashoffset: 192.6168975830078px; stroke-dasharray: 192.6168975830078px;', d='M40,10C57.351,10,71,23.649,71,40.5S57.351,71,40.5,71 S10,57.351,10,40.5S23.649,10,40.5,10z')
+          //else
             P  #{err}
 
 

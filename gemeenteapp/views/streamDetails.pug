@@ -1,25 +1,97 @@
-extends layout
+extends ../node_modules/pug-bootstrap/_bootstrap.pug
 
-block content
-    h1 #{title} van: #{streamName}
-    each val in streamInf
-        l Streamnaam: #{val.name}
-        br
-        l Gemaakt door: #{val.createtxid}
-        br
-        l Aantal items: #{val.items}
-        br
-        l Aantal publishers #{val.publishers}
-    h3 Streampublisher(s)
-    each val in streamPublisher
-        l #{val.publisher}
-        br
-    h3 StreamItem(s)
-    each val in streamItems
-        p
-            l Key: #{val.key}
-            br
-            l Publisher: #{val.publishers}
-            br  
-            l Beschrijving: #{val.data}
-            br
+block body
+    #wrap
+        nav.navbar.navbar-default
+            .container-fluid
+                // Brand and toggle get grouped for better mobile display
+                .navbar-header
+                    button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1', aria-expanded='false')
+                        span.sr-only Toggle navigation
+                        span.icon-bar
+                        span.icon-bar
+                        span.icon-bar
+                    a.navbar-brand(href='#')
+                        img.navar-brand-logo(alt='Brand', src='http://maba-online.nl/socialcoin/logosocialcoin.png')
+                // Collect the nav links, forms, and other content for toggling
+                #bs-example-navbar-collapse-1.collapse.navbar-collapse
+                    ul.nav.navbar-nav
+                        li.dropdown.active
+                            a.dropdown-toggle(href='streams', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+                                | Stream
+                                span.caret
+                            ul.dropdown-menu
+                                li
+                                    a(href='/createStream') Stream aanmaken
+                                span.sr-only (current)
+                                li.active
+                                    a(href='/stream') Streams bekijken
+                        span.sr-only (current)
+                        li.dropdown
+                            a.dropdown-toggle(href='streams', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+                                | Taken
+                                span.caret
+                            ul.dropdown-menu
+                                li
+                                    a(href='#') Taak aanmaken
+                                li
+                                    a(href='/gemeente/takenBekijken') Taken bekijken
+                    ul.nav.navbar-nav.navbar-right
+                        li
+                            a(href='/') Home
+                        li.active
+                            a(href='/gemeente') Gemeente
+                        span.sr-only (current)
+                        li
+                            a(href='/schuldhebbende') Schuldhebbende
+
+
+        .container.theme-showcase(role='main')
+            // Main jumbotron for a primary marketing message or call to action
+            .page-header
+                h1
+                    | SocialCoin | Stream '#{streamName}'
+            .row
+                .col-md-6
+                    h3 #{title} van: #{streamName}
+                    ul.list-group
+                        each val in streamInf
+                            li.list-group-item
+                                Strong Streamnaam:
+                                |  #{val.name}
+                            li.list-group-item
+                                Strong Gemaakt door:
+                                |  #{val.createtxid}
+                            li.list-group-item
+                                Strong Aantal items:
+                                |  #{val.items}
+                            li.list-group-item
+                                Strong Aantal publishers:
+                                |  #{val.publishers}
+
+                    h3 Streampublisher(s)
+
+                    ul.list-group
+                        each val in streamPublisher
+                            li.list-group-item
+                                | #{val.publisher}
+
+                .col-md-6
+                    h3 StreamItem(s)
+                    each val in streamItems
+
+                        table.table
+                            thead.thead-inverse
+                                tr
+                                    th.col-xs-1 Onderdeel
+                                    th Gegevens
+                            tbody
+                                tr
+                                    th.col-xs-1(scope='row') Key
+                                    td #{val.key}
+                                tr
+                                    th.col-xs-1(scope='row') Publisher
+                                    td #{val.publishers}
+                                tr
+                                    th.col-xs-1(scope='row') Beschrijving
+                                    td #{val.data}
