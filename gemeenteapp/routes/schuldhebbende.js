@@ -6,4 +6,16 @@ router.get('/', function(req, res, next) {
   res.render('schuldhebbende', { title: 'SocialCoin | Schuldhebbende' });
 });
 
+router.post('/', function(req, res, next) {
+  if (typeof localStorage === "undefined" || localStorage === null) {
+    var LocalStorage = require('node-localstorage').LocalStorage;
+    localStorage = new LocalStorage('./scratch');
+  }
+  localStorage.setItem('Walletadres', req.body.walletaddress);
+  console.log(localStorage.getItem('Walletadres'));
+    res.render('schuldhebbende', { title: 'SocialCoin | Schuldhebbende' });
+});
+
+
+
 module.exports = router;

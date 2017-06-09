@@ -28,6 +28,11 @@ block body
                         li.active
                             a(href='/schuldhebbende') Schuldhebbende
                         span.sr-only (current)
+                        li
+                            form(method='post', action='/')
+                                button.uitloggenknop(type='submit')
+                                    a.uitloggenknoplink Uitloggen
+
 
                 // /.navbar-collapse
             // /.container-fluid

@@ -25,15 +25,18 @@ block body
                                     a(href='/createStream') Stream aanmaken
                                 li
                                     a(href='/stream') Streams bekijken
-                        li.dropdown
+
+                        li.dropdown.active
                             a.dropdown-toggle(href='streams', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
                                 | Taken
                                 span.caret
                             ul.dropdown-menu
                                 li
                                     a(href='#') Taak aanmaken
-                                li
+                                li.active
                                     a(href='/gemeente/takenBekijken') Taken bekijken
+                                span.sr-only (current)
+                        span.sr-only (current)
                     ul.nav.navbar-nav.navbar-right
                         li
                             a(href='/') Home
@@ -43,55 +46,36 @@ block body
                         li
                             a(href='/schuldhebbende') Schuldhebbende
 
-
-                // /.navbar-collapse
-            // /.container-fluid
-
-
-
-    .container.theme-showcase(role='main')
-        // Main jumbotron for a primary marketing message or call to action
-        .page-header
-            h1
-                | SocialCoin | Gemeente
-        .row
-            .col-md-7
-                h3
-                    | Streams
-                .col-md-3
-                    a.btn.btn-lg.btn-primary.maakuwkeuze(href='/createStream') Stream aanmaken
-                .col-md-3
-                a.btn.btn-lg.btn-primary.maakuwkeuze(href='/stream') Streams bekijken
-                h3
-                    | Taken
-                .col-md-3
-                    a.btn.btn-lg.btn-primary.maakuwkeuze(href='#') Taak aanmaken
-                .col-md-3
-                a.btn.btn-lg.btn-primary.maakuwkeuze(href='#') Taken bekijken
-            .col-md-5
-                h3
-                    | Nieuws
-                script(type='text/javascript', src='https://feed.mikle.com/js/fw-loader.js', data-fw-param='31938/')
-                // end feedwind code
-
-    footer.stickyfooter
-        .container
-            .row.footertekst
-                .col-md-4
-                    p © SocialCoin / ISE-Projectgroep9
-                .col-md-4
-                    ul.footeropsomming
-                        li
-                            strong Over SocialCoin
-                        li
-                            a(href='http://socialcoin.nl', target='_blank') SocialCoin
-                        li
-                            a(href='http://socialcoin.nl', target='_blank') Doel
-                .col-md-4
-                    ul.footeropsomming
-                        li
-                            strong Over ISE-Projectgroep 9
-                        li
-                            a(href='http://socialcoin.nl', target='_blank') De Projectgroep
-                        li
-                            a(href='http://socialcoin.nl', target='_blank') De Projectgroep
+        .container.theme-showcase(role='main')
+            // Main jumbotron for a primary marketing message or call to action
+            .page-header
+                h1
+                    | SocialCoin | Taken detail: Tuin schoffelen
+            .row
+                .col-md-7
+                    form(method='post' action='/createStream')
+                        .input-group
+                            input.form-control(type='text', placeholder='Stream', name='name')
+                            span.input-group-btn
+                                button.btn.btn-default(type='submit') Stream aanmaken
+        footer.stickyfooter
+            .container
+                .row.footertekst
+                    .col-md-4
+                        p © SocialCoin / ISE-Projectgroep9
+                    .col-md-4
+                        ul.footeropsomming
+                            li
+                                strong Over SocialCoin
+                            li
+                                a(href='http://socialcoin.nl', target='_blank') SocialCoin
+                            li
+                                a(href='http://socialcoin.nl', target='_blank') Doel
+                    .col-md-4
+                        ul.footeropsomming
+                            li
+                                strong Over ISE-Projectgroep 9
+                            li
+                                a(href='http://socialcoin.nl', target='_blank') De Projectgroep
+                            li
+                                a(href='http://socialcoin.nl', target='_blank') De Projectgroep
