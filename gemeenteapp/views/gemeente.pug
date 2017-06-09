@@ -16,17 +16,15 @@ block body
                 // Collect the nav links, forms, and other content for toggling
                 #bs-example-navbar-collapse-1.collapse.navbar-collapse
                     ul.nav.navbar-nav
-                        li.dropdown.active
+                        li.dropdown
                             a.dropdown-toggle(href='streams', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
                                 | Stream
                                 span.caret
                             ul.dropdown-menu
                                 li
                                     a(href='/createStream') Stream aanmaken
-                                li.active
+                                li
                                     a(href='/stream') Streams bekijken
-                                span.sr-only (current)
-                            span.sr-only (current)
                         li.dropdown
                             a.dropdown-toggle(href='streams', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
                                 | Taken
@@ -45,15 +43,55 @@ block body
                         li
                             a(href='/schuldhebbende') Schuldhebbende
 
-        .container.theme-showcase(role='main')
-            // Main jumbotron for a primary marketing message or call to action
-            .page-header
-                h1
-                    | SocialCoin | Streams
-            .row
-                .col-md-7
-                    ul.list-group
-                    each val in nameList
-                        li.list-group-item= val.name
-                    else
-                        li.list-group-item Er zijn momenteel geen streams beschikbaar!
+
+                // /.navbar-collapse
+            // /.container-fluid
+
+
+
+    .container.theme-showcase(role='main')
+        // Main jumbotron for a primary marketing message or call to action
+        .page-header
+            h1
+                | SocialCoin | Gemeente
+        .row
+            .col-md-7
+                h3
+                    | Streams
+                .col-md-3
+                    a.btn.btn-lg.btn-primary.maakuwkeuze(href='/createStream') Stream aanmaken
+                .col-md-3
+                a.btn.btn-lg.btn-primary.maakuwkeuze(href='/stream') Streams bekijken
+                h3
+                    | Taken
+                .col-md-3
+                    a.btn.btn-lg.btn-primary.maakuwkeuze(href='#') Taak aanmaken
+                .col-md-3
+                a.btn.btn-lg.btn-primary.maakuwkeuze(href='#') Taken bekijken
+            .col-md-5
+                h3
+                    | Nieuws
+                script(type='text/javascript', src='https://feed.mikle.com/js/fw-loader.js', data-fw-param='31938/')
+                // end feedwind code
+
+    footer.stickyfooter
+        .container
+            .row.footertekst
+                .col-md-4
+                    p © SocialCoin / ISE-Projectgroep9
+                .col-md-4
+                    ul.footeropsomming
+                        li
+                            strong Over SocialCoin
+                        li
+                            a(href='http://socialcoin.nl', target='_blank') SocialCoin
+                        li
+                            a(href='http://socialcoin.nl', target='_blank') Doel
+                .col-md-4
+                    ul.footeropsomming
+                        li
+                            strong Over ISE-Projectgroep 9
+                        li
+                            a(href='http://socialcoin.nl', target='_blank') De Projectgroep
+                        li
+                            a(href='http://socialcoin.nl', target='_blank') De Projectgroep
