@@ -5,10 +5,9 @@ var taak = require('../objects/taak')
 router.get('/', function(req, res, next) {
   var t = new taak();
 	t.test();
-	t.get('testtaakstream3',function(info) {
-	  console.log(JSON.stringify(info));
+	t.get('testtaakstream3',function(taken) {
+		res.send(JSON.stringify(taken));
 	});
-	res.send('sdoasn');
 });
 
 module.exports = router;
