@@ -3,12 +3,19 @@ extends layout
 block content
   h1 Foto uploaden
   if uploadTry==false
-    form( action="/fotoUploaden" method="POST")
+    form(enctype="multipart/form-data" action="/fotoUploaden" method="POST")
       p Selecteer hier uw foto om te uploaden:
       label(for="fileToUpload")
       input#fileToUpload( type="file" name="fileToUpload")
+      br
       label(for="fromAddress")
-      input#fromAddress( type="text" name=fromAddress)
+      input#fromAddress( type="text" name="fromAddress" placeholder="address")
+      br
+      label(for="toStream")
+      input#toStream(type="text" name="toStream" placeholder="stream")
+      br
+      label(for="key")
+      input#key(type="text" name="key" placeholder="Key")
       br
       br
       input( type="submit" value="Uploaden")

@@ -9,9 +9,9 @@ var multichain = require("multichain-node")({
 var formidable = require('formidable');
 var fs = require('fs');
 var session = require('express-session');
+var fileUpload = require('express-fileupload');
 
 router.get('/', function(req, res, next) {
-
   res.render('fotoUploaden', {uploadTry : false});
 });
 
@@ -26,12 +26,35 @@ router.post('/', function(req, res, next) {
         var newpath = __dirname + files.fileToUpload.name;
         fs.rename(oldpath, newpath, function (err) {
           console.log('hoi2');
-          if (err) throw err;
-          uploadSucces = true;
+          console.log(form)
+          if (err){
+             throw err;
+          }
+          multichain.publish({from:req.body.fromAddress, stream: req.body.toSream, key: req.body.key, data: form}, (err, img) => {
+            if (err) {
+              console.log(err);
+              throw err;
+            }
+            uploadSucces = true;
+          });
         });
       });
    };
   res.render('fotoUploaden', {uploadSucces : uploadSucces});
 });
+
+
+/*router.post('/', function(req, res, next) {
+  var uploadSucces = false;
+  if(req.files) {
+    let uploadedFile = req.files.fileToUpload;
+    var oldpath = uploadedFile.path;
+    var newpath = __dirname + uploadedFile.name;
+
+    uploadSucces = true;
+  } else {
+    return res.status(400).send('No files were uploaded.');
+  }
+})*/
 
 module.exports = router;
