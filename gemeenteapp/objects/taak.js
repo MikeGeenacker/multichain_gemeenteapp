@@ -48,6 +48,12 @@ var taak = function() {
 			});
 		})
 
+	},
+	this.create = function(taak, callback) {
+		//TODO deze functie maken
+		
+
+		callback():
 	}
 
 }
