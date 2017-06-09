@@ -24,17 +24,9 @@ router.get('/', function(req, res, next) {
                     throw err;
                 }
 
-                /*for(var item in items.data) {
-                    console.log(items.data);
-                    var output = new Buffer(item, 'hex');
-                    console.log(item);
-                }*/
-
                 for (var index = 0; index < items.length; index++) {
-                    console.log(items[index].data);
                     var output = new Buffer(items[index].data, 'hex');
-                    items[index].data = output.toString();
-                    console.log(items[index].data);                    
+                    items[index].data = output.toString();                   
                 }
 
                 res.render('streamDetails', {
