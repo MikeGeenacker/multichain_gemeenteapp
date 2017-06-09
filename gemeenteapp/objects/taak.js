@@ -33,7 +33,7 @@ var taak = function() {
 					_taak.data = new Buffer(item.data, 'hex').toString('utf8');
 					_taak.data = trimData(_taak.data);
 					_taak.data = JSON.parse(_taak.data);
-                    _taak.data.timestamp = new Date(transaction.time*1000);
+					_taak.data.timestamp = new Date(transaction.time*1000);
 					console.log(JSON.stringify(transaction.time));
 					console.log(JSON.stringify(_taak.data.timestamp));
 					_taak = vormTaak(_taak.data);

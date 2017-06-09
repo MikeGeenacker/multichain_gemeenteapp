@@ -6,7 +6,7 @@ router.get('/', function(req, res, next) {
   var t = new taak();
 	t.test();
 	t.get('testtaakstream3',function(taken) {
-		res.send(JSON.stringify(taken));
+		res.render('taken', taken);
 	});
 });
 
