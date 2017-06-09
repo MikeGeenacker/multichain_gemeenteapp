@@ -6,15 +6,22 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
+var gemeente = require('./routes/gemeente');
+var schuldhebbende = require('./routes/schuldhebbende')
 var users = require('./routes/users');
 var about = require('./routes/about');
 var saldoOpvragen = require('./routes/saldoOpvragen');
 var stream = require('./routes/stream');
 var streamHome = require('./routes/streamsHome');
 var streamCreate = require('./routes/createStream');
+var streamDetails = require ('./routes/streamDetails');
 var createWallet = require('./routes/createWallet');
 var transaction = require('./routes/transaction');
+<<<<<<< HEAD
 var walletBekijken = require('./routes/walletBekijken');
+=======
+var takentest = require('./routes/takentest');
+>>>>>>> 04b017894b24a3090cde57d7e5e9a86ee5556c56
 
 var app = express();
 
@@ -31,15 +38,23 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
+app.use('/gemeente', gemeente);
+app.use('/schuldhebbende', schuldhebbende);
 app.use('/users', users);
 app.use('/about', about);
 app.use('/saldoOpvragen', saldoOpvragen);
 app.use('/stream', stream);
 app.use('/streamHome',streamHome);
 app.use('/createStream', streamCreate);
+app.use('/streamDetails', streamDetails);
 app.use('/createWallet', createWallet);
 app.use('/transaction', transaction);
+<<<<<<< HEAD
 app.use('/walletBekijken', walletBekijken);
+=======
+app.use('/takentest', takentest);
+
+>>>>>>> 04b017894b24a3090cde57d7e5e9a86ee5556c56
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

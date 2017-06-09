@@ -19,7 +19,7 @@ router.post('/', function(req, res, next){
         }
         console.log(name);
     })
-        res.render('streamsHome');
+        res.render('createStream');
 });
 
 module.exports=router   
