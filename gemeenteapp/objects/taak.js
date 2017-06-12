@@ -51,10 +51,49 @@ var taak = function() {
 
 	},
 	this.create = function(taak, callback) {
-		//TODO deze functie maken
+		var locals = {};
+		async.series([
+			function(callback) {
+				var createdObj = {
+					from: taak.user,
+					name: taak.naam,
+					open: true,
+					
+				};
+				multichain.create(createdObj, (err, address) => {
+					if(err) throw err;
+					locals.address = address;
+					callback();
+				});
+			},
+			function(callback) {
+				multichain.subscribe({stream: locals.address}, (err) => {
+					if(err) throw err;
+					console.log('SUBSCRIBED');
+					callback();
+				});
+			},
+			function(callback) {
+				var details =  {
+						"beschrijving": taak.beschrijving,
+						"beloning": taak.beloning,
+						"looptijd": taak.looptijd,
+						"schuldhebbende": taak.schuldhebbende,
+						"progress": "0"
+					};
+				details= new Buffer(JSON.stringify(details)).toString("hex");
+				console.log(details);
+				multichain.publishFrom({from: taak.user, key: "", stream: taak.naam, data: details}, (err, item) => {
+					if(err) console.log(JSON.stringify(err));
+					callback();
+				});
+			}
+		],
+			function(err,result) {
+				// hier is alles gedaan
+				callback(taak);
+			});
 
-
-		callback();
 	}
 
 }

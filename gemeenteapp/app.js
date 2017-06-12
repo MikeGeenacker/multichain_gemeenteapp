@@ -22,6 +22,7 @@ var walletBekijkenClean = require('./routes/walletBekijkenClean');
 var takentest = require('./routes/takentest');
 var takenBekijken = require('./routes/takenBekijken');
 var taakDetails = require('./routes/taakDetails');
+var taakAanmaken = require('./routes/taakAanmaken');
 
 var app = express();
 
@@ -54,6 +55,7 @@ app.use('/takentest', takentest);
 app.use('/walletBekijken', walletBekijkenClean);
 app.use('/gemeente/takenBekijken', takenBekijken);
 app.use('/gemeente/takenBekijken/taakDetails', taakDetails);
+app.use('/gemeente/taakAanmaken', taakAanmaken);
 
 
 // catch 404 and forward to error handler
