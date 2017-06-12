@@ -1,0 +1,21 @@
+extends layout
+block content
+  h1 Adres labelen
+  form(method='POST' action='../walletLabel')
+    div.form-group
+      label(for='address') Adres:
+      input#address.form-control(type='text', placeholder='This address will be labelled' name='address')
+    div.form-group
+      label(for='addressLabel') Label:
+      input#addressLabel.form-control(type='text', placeholder='This label will be used' name='addressLabel')
+    button.btn.btn-primary(type='submit') Set Label
+
+  if labellingTry == true
+    h1 Adres labelen
+    if labelSet
+      p Label is aangepast,
+      p Adres: #{address}
+      p Label voor het adres : #{label}
+    else
+      p Label aanpassen mislukt,
+      p Check label en adres.
