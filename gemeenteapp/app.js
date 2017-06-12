@@ -51,12 +51,9 @@ app.use('/createWallet', createWallet);
 app.use('/transaction', transaction);
 app.use('/walletBekijken', walletBekijken);
 app.use('/takentest', takentest);
-<<<<<<< HEAD
 app.use('/walletBekijken', walletBekijkenClean);
-=======
 app.use('/gemeente/takenBekijken', takenBekijken);
 app.use('/gemeente/takenBekijken/taakDetails', taakDetails);
->>>>>>> 3aa2407b8509a5f1faa450fc00eb04e818fb46f1
 
 
 // catch 404 and forward to error handler
