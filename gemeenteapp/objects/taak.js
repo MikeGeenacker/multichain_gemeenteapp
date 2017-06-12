@@ -79,7 +79,8 @@ var taak = function() {
 						"beloning": taak.beloning,
 						"looptijd": taak.looptijd,
 						"schuldhebbende": taak.schuldhebbende,
-						"progress": "0"
+						"status": "open",
+						"voortgang": "0"
 					};
 				details= new Buffer(JSON.stringify(details)).toString("hex");
 				console.log(details);
@@ -94,6 +95,12 @@ var taak = function() {
 				callback(taak);
 			});
 
+	},
+	this.update = function(taaknaam, details, callback) {
+		this.get("DIT WORDT EM", function(taken) {
+			console.log(JSON.stringify(taken));
+		});
+		callback();
 	}
 
 }
@@ -123,6 +130,7 @@ function vormTaak(data) {
 	let _taak ={};
 		_taak.schuldhebbende = data.schuldhebbende;
 		_taak.beloning = data.beloning;
+		_taak.beschrijving = data.beschrijving;
 		_taak.status = data.status;
 		_taak.voortgang = data.voortgang;
 	  _taak.timestamp = data.timestamp;

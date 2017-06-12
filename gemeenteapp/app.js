@@ -29,6 +29,7 @@ var saldoOpvragen = require('./routes/schuldhebbende/saldoOpvragen');
 var takenOverzicht = require('./routes/taken/takenOverzicht');
 var taakGeschiedenis = require('./routes/taken/taakGeschiedenis');
 var taakDetails = require('./routes/taken/taakDetails');
+var taakAanpassen = require('./routes/taken/taakAanpassen');
 var createWallet = require('./routes/createWallet');
 
 var app = express();
@@ -76,6 +77,7 @@ app.use('/gemeente/taken', takenOverzicht);
 app.use('/gemeente/taken/geschiedenis', taakGeschiedenis);
 app.use('/gemeente/taken/details', taakDetails);
 app.use('/gemeente/createWallet', createWallet);
+app.use('/gemeente/taken/aanpassen', taakAanpassen);
 
 
 
