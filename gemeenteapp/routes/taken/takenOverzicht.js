@@ -7,8 +7,15 @@ var multichain = require("multichain-node")({
     pass: "uPc6civWyGanmrmAgn3Tn9pPgYR3noMQt9nPMun9GeD"
 });
 
+
+/*GET stream names*/
 router.get('/', function(req, res, next) {
-    res.render('taakDetails', {title: 'SocialCoin | Taak aanmaken'});
+    multichain.listStreams((err, streams) => {
+        if(err) {
+            throw err;
+        }
+        res.render('taken/takenOverzicht', {title: 'Takenoverzicht', nameList: streams});
+    })
 });
 
-module.exports=router   
+module.exports = router;

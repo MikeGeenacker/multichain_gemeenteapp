@@ -17,8 +17,8 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res, next) {
 
     localStorage.removeItem('Walletadres');
+    console.log(localStorage.getItem('Walletadres'));
     walletaddress = localStorage.getItem('Walletadres');
-    console.log('Post:' + walletaddress);
     res.render('index', {title: 'SocialCoin | Home', walletadres: walletaddress});
 });
 
