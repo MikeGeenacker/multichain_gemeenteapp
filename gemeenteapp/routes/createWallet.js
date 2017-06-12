@@ -8,19 +8,19 @@ var multichain = require("multichain-node")({
 });
 
 router.get('/', function(req, res, next) {
-    multichain.getNewAddress((err, addressInfo) => {
+    multichain.getNewAddress((err, addressInfo) => { //create new address
       if(err){
         throw err;
       }
       var address = addressInfo;
-      var permission = "connect,receive"; // add send, create label, revoke send
-      multichain.grant({addresses : address, permissions : permission},(err) => {
+      var permission = "connect,receive";
+      multichain.grant({addresses : address, permissions : permission},(err) => { //set address permissions
         if(err){
           throw err;
       }
 
     })
-    res.render('createWallet', {address : addressInfo, permission : permission});
+    res.render('createWallet', {address : addressInfo, permission : permission}); //show created address and permissions
   })
 });
 

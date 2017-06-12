@@ -22,6 +22,7 @@ var walletBekijkenClean = require('./routes/walletBekijkenClean');
 var takentest = require('./routes/takentest');
 var takenBekijken = require('./routes/takenBekijken');
 var taakDetails = require('./routes/taakDetails');
+var walletLabel = require('./routes/walletLabel');
 
 var app = express();
 
@@ -51,9 +52,10 @@ app.use('/createWallet', createWallet);
 app.use('/transaction', transaction);
 app.use('/walletBekijken', walletBekijken);
 app.use('/takentest', takentest);
-app.use('/walletBekijken', walletBekijkenClean);
+app.use('/walletBekijkenClean', walletBekijkenClean);
 app.use('/gemeente/takenBekijken', takenBekijken);
 app.use('/gemeente/takenBekijken/taakDetails', taakDetails);
+app.use('/walletLabel', walletLabel);
 
 
 // catch 404 and forward to error handler
