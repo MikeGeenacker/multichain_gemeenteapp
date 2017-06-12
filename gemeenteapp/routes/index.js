@@ -6,6 +6,7 @@ if (typeof localStorage === "undefined" || localStorage === null) {
     localStorage = new LocalStorage('./scratch');
 }
 var walletaddress = localStorage.getItem('Walletadres');
+var walletaddressgemeente = localStorage.getItem('Walletadresgemeente');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -15,10 +16,12 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-
     localStorage.removeItem('Walletadres');
-    console.log(localStorage.getItem('Walletadres'));
+    localStorage.removeItem('Walletadresgemeente');
+
     walletaddress = localStorage.getItem('Walletadres');
+    walletaddressgemeente = localStorage.getItem('Walletadresgemeente');
+
     res.render('index', {title: 'SocialCoin | Home', walletadres: walletaddress});
 });
 

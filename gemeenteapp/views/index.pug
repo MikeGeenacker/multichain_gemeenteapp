@@ -9,15 +9,18 @@ include includes/home.pug
                 h3
                     | Maak uw keuze
                 .col-md-6
-                    a.btn.btn-lg.btn-primary.maakuwkeuze(href='/gemeente') Gemeente
+                    if walletadres != null
+                        a.btn.btn-lg.btn-primary.maakuwkeuze(href='/gemeente') gemeente
+                    else
+                        button.btn.btn-primary.btn-lg.maakuwkeuze(type='button', data-toggle='modal', data-target='#gemeente') Gemeente
                 .col-md-6
                     if walletadres != null
                         a.btn.btn-lg.btn-primary.maakuwkeuze(href='/schuldhebbende') Schuldhebbende
                     else
-                        button.btn.btn-primary.btn-lg.maakuwkeuze(type='button', data-toggle='modal', data-target='#myModal') Schuldhebbende
+                        button.btn.btn-primary.btn-lg.maakuwkeuze(type='button', data-toggle='modal', data-target='#schuldhebbende') Schuldhebbende
 
                 // Modal
-                #myModal.modal.fade(role='dialog')
+                #schuldhebbende.modal.fade(role='dialog')
                     .modal-dialog
                         // Modal content
                         .modal-content
@@ -32,6 +35,22 @@ include includes/home.pug
                                     div.modal-footer
                                         button.btn.btn-primary(type='button', data-dismiss='modal') Annuleren
                                         button.btn.btn-primary(type='submit') Opslaan
+                #gemeente.modal.fade(role='dialog')
+                    .modal-dialog
+                        // Modal content
+                        .modal-content
+                            .modal-header
+                                button.close(type='button', data-dismiss='modal') ×
+                                h4.modal-title Gemeente
+                            .modal-body
+                                form(method='POST' action='/gemeente')
+                                    div.form-group
+                                        label(for='address') Wallet:
+                                        input#address.form-control(type='text', placeholder='Adres' name='walletaddressgemeente')
+                                    div.modal-footer
+                                        button.btn.btn-primary(type='button', data-dismiss='modal') Annuleren
+                                        button.btn.btn-primary(type='submit') Opslaan
+
             .col-md-5
                 include includes/news.pug
 include includes/footer.pug
