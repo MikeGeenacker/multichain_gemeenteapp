@@ -1,4 +1,4 @@
-extends ../../node_modules/pug-bootstrap/_bootstrap.pug
+extends ../node_modules/pug-bootstrap/_bootstrap.pug
 
 block body
     #wrap
@@ -11,39 +11,45 @@ block body
                         span.icon-bar
                         span.icon-bar
                         span.icon-bar
-                    a.navbar-brand(href='/')
+                    a.navbar-brand(href='#')
                         img.navar-brand-logo(alt='Brand', src='http://maba-online.nl/socialcoin/logosocialcoin.png')
                 // Collect the nav links, forms, and other content for toggling
                 #bs-example-navbar-collapse-1.collapse.navbar-collapse
                     ul.nav.navbar-nav
+                        li.active
+                            a(href='/')
+                                | Home
+                                span.sr-only (current)
                         li.dropdown
                             a.dropdown-toggle(href='streams', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
-                                | Wallet
+                                | Stream
                                 span.caret
                             ul.dropdown-menu
                                 li
-                                    a(href='/gemeente/wallets') Wallets bekijken
+                                    a(href='/gemeente/createStream') Stream aanmaken
                                 li
-                                    a(href='/gemeente/createWallet') Wallet aanmaken
+                                    a(href='#') Streams bekijken
                         li.dropdown
                             a.dropdown-toggle(href='streams', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
                                 | Taken
                                 span.caret
                             ul.dropdown-menu
                                 li
-                                    a(href='/gemeente/taakAanmaken') Taak aanmaken
+                                    a(href='#') Taak aanmaken
                                 li
-                                    a(href='/gemeente/taken') Taken bekijken
-                    ul.nav.navbar-nav.navbar-right
-                        li
-                            a(href='/') Home
-                        li.active
-                            a(href='/gemeente') Gemeente
-                        li
-                            a(href='/schuldhebbende') Schuldhebbende
+                                    a(href='#') Taken bekijken
 
-
-                // /.navbar-collapse
-            // /.container-fluid
-
+        .container.theme-showcase(role='main')
+            // Main jumbotron for a primary marketing message or call to action
+            .page-header
+                h1
+                    | SocialCoin | Steam aanmaken
+            .row
+                .col-md-7
+                    form(method='POST', action='/createStream')
+                        .input-group
+                            input.form-control(type='text')
+                            span.input-group-btn
+                                button.btn.btn-default(type='submit') Stream aanmaken
+                        // /input-group
 

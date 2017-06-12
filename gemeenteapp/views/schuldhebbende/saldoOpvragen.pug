@@ -8,20 +8,20 @@ include ../includes/schuldhebbende.pug
             button.btn.btn-default(onclick='goBack()') Terug
       .row
         .col-md-6
-          if walletaddress != null
             ul.list-group
               li.list-group-item
                 span
                 strong
                   |     Wallet
                 i
-                  |     #{walletaddress}
+                  |     #{walletaddress}#{err}
                 li.list-group-item
                   span
                   strong
                     |     Saldo
                   i
-                    |     SC #{quantity}
+                    |     SC #{quantity}#{saldo}
+
 
 
 

@@ -7,9 +7,15 @@ include includes/gemeente.pug
         .row
             .col-md-7
                 h3
+                    | Wallet
+                .col-md-3
+                    a.btn.btn-lg.btn-primary.maakuwkeuze(href='/gemeente/wallets') Wallets bekijken
+                .col-md-3
+                a.btn.btn-lg.btn-primary.maakuwkeuze(href='/gemeente/createWallet') Wallet aanmaken
+                h3
                     | Taken
                 .col-md-3
-                    a.btn.btn-lg.btn-primary.maakuwkeuze(href='#') Taak aanmaken
+                    a.btn.btn-lg.btn-primary.maakuwkeuze(href='/gemeente/taakAanmaken') Taak aanmaken
                 .col-md-3
                 a.btn.btn-lg.btn-primary.maakuwkeuze(href='/gemeente/taken') Taken bekijken
             .col-md-5
