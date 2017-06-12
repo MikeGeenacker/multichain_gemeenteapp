@@ -1,43 +1,11 @@
-extends ../node_modules/pug-bootstrap/_bootstrap.pug
-
-block body
-  #wrap
-    nav.navbar.navbar-default
-      .container-fluid
-        // Brand and toggle get grouped for better mobile display
-        .navbar-header
-          button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1', aria-expanded='false')
-            span.sr-only Toggle navigation
-            span.icon-bar
-            span.icon-bar
-            span.icon-bar
-          a.navbar-brand(href='#')
-            img.navar-brand-logo(alt='Brand', src='http://maba-online.nl/socialcoin/logosocialcoin.png')
-        // Collect the nav links, forms, and other content for toggling
-        #bs-example-navbar-collapse-1.collapse.navbar-collapse
-          ul.nav.navbar-nav
-            li.active
-              a(href='/saldoOpvragen') Saldo
-              li
-                a(href='#') Taken
-          ul.nav.navbar-nav.navbar-right
-            li
-              a(href='/') Home
-            li
-              a(href='/gemeente') Gemeente
-            li.active
-              a(href='/schuldhebbende') Schuldhebbende
-            span.sr-only (current)
-            li
-              form(method='post', action='/')
-                button.uitloggenknop(type='submit')
-                  a.uitloggenknoplink Uitloggen
-
+include ../includes/schuldhebbende.pug
     .container.theme-showcase(role='main')
       // Main jumbotron for a primary marketing message or call to action
       .page-header
         h1
           | SocialCoin | Saldo opvragen
+          .pull-right
+            button.btn.btn-default(onclick='goBack()') Terug
       .row
         .col-md-6
           if walletaddress != null
@@ -67,7 +35,7 @@ block body
                 path#load-line1.load-circle(style='stroke-dashoffset: 192.6168975830078px; stroke-dasharray: 192.6168975830078px;', d='M40,10C57.351,10,71,23.649,71,40.5S57.351,71,40.5,71 S10,57.351,10,40.5S23.649,10,40.5,10z')
           //else
             P  #{err}
-
+include ../includes/footer.pug
 
 
 

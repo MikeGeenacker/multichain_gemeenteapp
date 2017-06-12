@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var taak = require('../objects/taak')
+var taak = require('../../objects/taak')
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
   var linkje = req.query.name;
 	t.get(linkje, function(taken) {
 		var takenLengte = taken.length - 1;
-		res.render('taakDetails', {opdrachten: taken[2], huidigeTaak: linkje});
+		res.render('taken/taakGeschiedenis', {opdrachten: taken, huidigeTaak: linkje});
 	});
 });
 
