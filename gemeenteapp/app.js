@@ -23,6 +23,7 @@ var walletBekijkenClean = require('./routes/walletBekijkenClean');
 
 var takenBekijken = require('./routes/takenBekijken');
 var taakDetails = require('./routes/taakDetails');
+var taakAanmaken = require('./routes/taakAanmaken');
 
 var saldoOpvragen = require('./routes/schuldhebbende/saldoOpvragen');
 
@@ -62,6 +63,7 @@ app.use('/walletBekijken', walletBekijken);
 app.use('/walletBekijken', walletBekijkenClean);
 app.use('/gemeente/takenBekijken', takenBekijken);
 app.use('/gemeente/takenBekijken/taakDetails', taakDetails);
+app.use('/gemeente/taakAanmaken', taakAanmaken);
 
 app.use('/schuldhebbende/saldo', saldoOpvragen);
 
