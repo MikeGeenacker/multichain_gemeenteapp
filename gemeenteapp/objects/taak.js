@@ -38,6 +38,7 @@ var taak = function() {
 					console.log(JSON.stringify(_taak.data.timestamp));
 					_taak = vormTaak(_taak.data);
 					taken.push(_taak);
+					taken.naam = streamnaam;
 					callback();
 				})
 			},
