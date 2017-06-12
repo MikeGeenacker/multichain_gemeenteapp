@@ -1,0 +1,17 @@
+include ../includes/gemeente.pug
+    .container.theme-showcase(role='main')
+        // Main jumbotron for a primary marketing message or call to action
+        .page-header
+            h1
+                | Taken
+                .pull-right
+                    button.btn.btn-default(onclick='goBack()') Terug
+        .row
+            .col-md-7
+                ul.list-group
+                each val in nameList
+                    li.list-group-item
+                        a(href='/gemeente/taken/details?name='+ val.name) #{val.name}
+                else
+                    li.list-group-item Er zijn momenteel geen taken beschikbaar!
+include ../includes/footer.pug

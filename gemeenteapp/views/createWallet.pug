@@ -1,7 +1,13 @@
-extends layout
-
-block content
-  h1 title
-  p Dit is uw address: #{address}
-  p U heeft de volgende permissions: #{permission}
-  a(class="button" href="../about") Terug
+include includes/gemeente.pug
+    .container.theme-showcase(role='main')
+      // Main jumbotron for a primary marketing message or call to action
+      .page-header
+        h1
+          | Taken
+          .pull-right
+            button.btn.btn-default(onclick='goBack()') Terug
+      .row
+        .col-md-6
+          p Nieuw adres: #{address}
+          p Met de volgende permissions: #{permission}
+include includes/footer.pug

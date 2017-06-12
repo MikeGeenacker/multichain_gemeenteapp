@@ -1,0 +1,36 @@
+include ../includes/gemeente.pug
+        .container.theme-showcase(role='main')
+            // Main jumbotron for a primary marketing message or call to action
+            .page-header
+                div
+                    h1
+
+                        | Taak #{huidigeTaak}
+                        .pull-right
+                            button.btn.btn-default(onclick='goBack()') Terug
+
+                .text-right
+                    a(href='/gemeente/taken/geschiedenis?name='+ huidigeTaak) Geschiedenis taak bekijken
+
+            .row
+                .col-md-6
+                    ul.list-group
+                        li.list-group-item
+                            strong Taaknaam:
+                            |  #{huidigeTaak}
+                        li.list-group-item
+                            strong Schuldhebbende:
+                            |  #{opdrachten.schuldhebbende}
+                        li.list-group-item
+                            strong Beloning:
+                            |  #{opdrachten.beloning}
+                        li.list-group-item
+                            strong Status:
+                            |  #{opdrachten.status}
+                        li.list-group-item
+                            strong Voortgang:
+                            |  #{opdrachten.voortgang}
+                        li.list-group-item
+                            strong Datum:
+                            |  #{opdrachten.timestamp}
+include ../includes/footer.pug
