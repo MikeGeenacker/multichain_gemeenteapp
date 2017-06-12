@@ -7,7 +7,6 @@ router.get('/', function(req, res, next) {
   var t = new taak();
   var linkje = req.query.name;
 	t.get(linkje, function(taken) {
-		var takenLengte = taken.length - 1;
 		res.render('taken/taakGeschiedenis', {opdrachten: taken, huidigeTaak: linkje});
 	});
 });
