@@ -11,7 +11,14 @@ include ../includes/gemeente.pug
                 ul.list-group
                 each val in nameList
                     li.list-group-item
-                        a(href='/gemeente/taken/details?name='+ val.name) #{val.name}
+                        if val.subscribed
+                            a(href='/gemeente/taken/details?name='+ val.name) #{val.name}
+                        if val.subscribed == false
+                            | #{val.name}
+                            .pull-right
+                              form(action='/gemeente/taken', method='POST')
+                                input(type='hidden', value=val.name, name='name')
+                                button.btn.btn-xs(type='submit') Aanmelden
                 else
                     li.list-group-item Er zijn momenteel geen taken beschikbaar!
 include ../includes/footer.pug
