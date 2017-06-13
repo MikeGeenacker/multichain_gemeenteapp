@@ -4,17 +4,27 @@ var taak = require('../../objects/taak')
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
+    var t = new taak();
+    var linkje = req.query.name;
+    t.get(linkje, function(taken) {
+        var takenLengte = taken.length - 1;
+        res.render('taakAanpassen', {opdrachten: taken[takenLengte], huidigeTaak: linkje});
+    });
+
+});
+
+router.post('/', function(req, res, next) {
   	var t = new taak();
   	var details = {
-  		schuldhebbende: '1T4ip6sfhjHcBDRcWKEcoCqZZWKUpcZTM4KPH4',
-    	beschrijving:"VEGEN!",
-			beloning:"10",
-			looptijd:"2",
-			status:"toegewezen",
-			voortgang:"0"
+  		schuldhebbende: req.body.schuldhebbende,
+    	beschrijving: req.body.beschrijving,
+			beloning: req.body.beloning,
+			looptijd: req.body.looptijd,
+			status: req.body.statustaak,
+			voortgang: req.body.voortgang
   	};
-	t.update('Buurtfeest', details, function(taken) {
-		res.send('updated');
+	t.update(req.body.naam, details, function(taken) {
+		res.redirect('/gemeente/taken/details?name=' + req.body.naam);
 	});
 });
 

@@ -11,7 +11,6 @@ var localStorage = require('localStorage');
 var taak = function() {
 	this.getVoorSchuldhebbende = function(schuldhebbende_adr, callback) {
 		var streamsVanSchuldhebbende = [];
-		console.log(schuldhebbende_adr);
 		multichain.listStreams((err, streams) => {
 			if(err) console.log(err);
 			// console.log(streams);
@@ -30,7 +29,7 @@ var taak = function() {
 			// console.log(streamsVanSchuldhebbende);
 			callback(streamsVanSchuldhebbende);
 		});
-
+		
 	},
 
     this.get = function (streamnaam, callback2) {
@@ -71,7 +70,7 @@ var taak = function() {
                             open: true
                         };
                         multichain.create(createdObj, (err, address) => {
-                            if (err) throw err;
+                            if (err) console.log(err);
                             locals.address = address;
                             callback();
                         });
@@ -135,7 +134,11 @@ var taak = function() {
                         if (err) console.log(err);
 												updateTaak(taaknaam, details, taken[laatsteElem]);
                     });
-				}
+
+				}else  {
+                    updateTaak(taaknaam, details, taken[laatsteElem]);
+                };
+                callback();
             });
 
         };
@@ -146,10 +149,6 @@ var taak = function() {
 
     function updateTaak(taaknaam, details, oudetaak){
         var newdetails = {};
-						multichain.listPermissions({permissions: taaknaam + '.*'}, (err, permissions) => {
-							if(err) console.log(err);
-							console.log(permissions);
-						});
 			  Object.keys(details).forEach(function(key, index) {	
 					details[key]=strcpyreplace(oudetaak[key], details[key]);
 				//	console.log('O(' + key + '):' + oudetaak[key]);
@@ -168,6 +167,10 @@ var taak = function() {
 
     function historyNaarTaak(taakHistoryArr) {
         let finishedTaak = {};
+        taakHistoryArr.sort(function (a, b) {
+            return new Date(b.timestamp) - new Date(a.timestamp);
+        });
+        taakHistoryArr.reverse();
         for (let i = 0; i < taakHistoryArr.length; i++) {
             // Vul initiele taakdeel in
             if (i == 0) {
@@ -176,8 +179,17 @@ var taak = function() {
                 finishedTaak.schuldhebbende = taakHistoryArr[i].schuldhebbende || finishedTaak.schuldhebbende;
                 finishedTaak.beloning = taakHistoryArr[i].beloning || finishedTaak.beloning;
                 finishedTaak.status = taakHistoryArr[i].status || finishedTaak.status;
+                finishedTaak.beschrijving = taakHistoryArr[i].beschrijving || finishedTaak.beschrijving;
                 finishedTaak.voortgang = taakHistoryArr[i].voortgang || finishedTaak.voortgang;
-                finishedTaak.timestamp = taakHistoryArr[i].timestamp || finishedTaak.timestamp;
+                // finishedTaak.timestamp = taakHistoryArr[i].timestamp || finishedTaak.timestamp;
+                if(taakHistoryArr[i].timestamp - taakHistoryArr[i-1].timestamp > 0) {
+                    finishedTaak.timestamp = taakHistoryArr[i].timestamp;
+
+                } else if(taakHistoryArr[i].timestamp - taakHistoryArr[i-1].timestamp <0) {
+                    finishedTaak.timestamp =taakHistoryArr[i-1].timestamp;
+                } else {
+                    finishedTaak.timestamp =taakHistoryArr[i].timestamp;
+                }
 
             }
         }

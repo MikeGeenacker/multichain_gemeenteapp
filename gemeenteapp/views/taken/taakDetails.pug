@@ -11,6 +11,7 @@ include ../includes/gemeente.pug
 
                 .text-right
                     a(href='/gemeente/taken/geschiedenis?name='+ huidigeTaak) Geschiedenis taak bekijken
+                    a(href='/gemeente/taken/aanpassen?name='+ huidigeTaak) Taak aanpassen
 
             .row
                 .col-md-6
@@ -18,6 +19,9 @@ include ../includes/gemeente.pug
                         li.list-group-item
                             strong Taaknaam:
                             |  #{huidigeTaak}
+                        li.list-group-item
+                            strong Beschrijving:
+                            |  #{opdrachten.beschrijving}
                         li.list-group-item
                             strong Schuldhebbende:
                             |  #{opdrachten.schuldhebbende}
@@ -27,6 +31,9 @@ include ../includes/gemeente.pug
                         li.list-group-item
                             strong Status:
                             |  #{opdrachten.status}
+                        li.list-group-item
+                            strong Looptijd (D):
+                            |  #{opdrachten.looptijd}
                         li.list-group-item
                             strong Voortgang:
                             |  #{opdrachten.voortgang}

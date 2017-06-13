@@ -11,4 +11,4 @@ router.get('/', function(req, res, next) {
     res.render('takenBekijken', {title: 'SocialCoin | Taak aanmaken'});
 });
 
-module.exports=router   
+module.exports=router;

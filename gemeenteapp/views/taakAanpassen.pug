@@ -1,6 +1,39 @@
-extends layout
+include ./includes/gemeente.pug
+  .container.theme-showcase(role='main')
+    // Main jumbotron for a primary marketing message or call to action
+    .page-header
+      div
+        h1
 
-block content
-  h1= title
-  p Welkom bij #{chainname}
-  p Versie #{version}
+          | Taak #{huidigeTaak}
+          .pull-right
+            button.btn.btn-default(onclick='goBack()') Terug
+
+    .row
+      .col-md-7
+        form(method='POST' action='/gemeente/taken/aanpassen')
+          div.form-group
+            label(for='naam') Naam*
+            input#naam.form-control(type='text', placeholder='Taaknaam' name='naam' value=huidigeTaak)
+          div.form-group
+            label(for='beschrijving') Beschrijving*
+            textarea#beschrijving.form-control(placeholder='Typ hier een korte beschrijving' name='beschrijving')
+              | #{opdrachten.beschrijving}
+          div.form-group
+            label(for='beloning') Beloning*
+            input#beloning.form-control(type='text', placeholder='100' name='beloning' value=opdrachten.beloning)
+          div.form-group
+            label(for='looptijd') Looptijd*
+            input#looptijd.form-control(type='text', placeholder='Tijd in dagen' name='looptijd' value=opdrachten.looptijd)
+          div.form-group
+            label(for='looptijd') Status*
+            input#looptijd.form-control(type='text', placeholder='Tijd in dagen' name='statustaak' value=opdrachten.status)
+          div.form-group
+            label(for='looptijd') Voortgang*
+            input#looptijd.form-control(type='text', placeholder='Tijd in dagen' name='voortgang' value=opdrachten.voortgang)
+          div.form-group
+            label(for='schuldhebbende') Schuldhebbende
+            input#schuldhebbende.form-control(type='text', placeholder='Adres' name='schuldhebbende' value=opdrachten.schuldhebbende)
+          button.btn.btn-primary(type='submit') Taak aanmaken
+
+include ./includes/footer.pug
