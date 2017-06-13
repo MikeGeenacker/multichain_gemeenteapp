@@ -9,12 +9,12 @@ include includes/home.pug
                 h3
                     | Maak uw keuze
                 .col-md-6
-                    if walletadres != null
+                    if walletadres != null && ingelogd == 'gemeente'
                         a.btn.btn-lg.btn-primary.maakuwkeuze(href='/gemeente') gemeente
                     else
                         button.btn.btn-primary.btn-lg.maakuwkeuze(type='button', data-toggle='modal', data-target='#gemeente') Gemeente
                 .col-md-6
-                    if walletadres != null
+                    if walletadres != null && ingelogd == 'schuldhebbende'
                         a.btn.btn-lg.btn-primary.maakuwkeuze(href='/schuldhebbende') Schuldhebbende
                     else
                         button.btn.btn-primary.btn-lg.maakuwkeuze(type='button', data-toggle='modal', data-target='#schuldhebbende') Schuldhebbende

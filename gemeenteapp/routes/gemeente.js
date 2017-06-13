@@ -11,8 +11,8 @@ router.post('/', function(req, res, next) {
         var LocalStorage = require('node-localstorage').LocalStorage;
         localStorage = new LocalStorage('./scratch');
     }
-    localStorage.setItem('Walletadresgemeente', req.body.walletaddressgemeente);
-    console.log(localStorage.getItem('Walletadresgemeente'));
+    localStorage.setItem('Walletadres', req.body.walletaddressgemeente);
+    localStorage.setItem('ingelogd', 'gemeente');
     res.render('gemeente', { title: 'SocialCoin | Schuldhebbende' });
 });
 
