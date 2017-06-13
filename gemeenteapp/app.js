@@ -59,8 +59,6 @@ app.use('/streamDetails', streamDetails);
 
 app.use('/transaction', transaction);
 app.use('/walletBekijken', walletBekijken);
-app.use('/takentest', takentest);
-app.use('/walletBekijkenClean', walletBekijkenClean);
 app.use('/gemeente/takenBekijken', takenBekijken);
 app.use('/gemeente/takenBekijken/taakDetails', taakDetails);
 app.use('/walletLabel', walletLabel);

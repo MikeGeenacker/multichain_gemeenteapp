@@ -6,6 +6,7 @@ var multichain = require('multichain-node') ({
 	user: 'multichainrpc',
 	pass: 'uPc6civWyGanmrmAgn3Tn9pPgYR3noMQt9nPMun9GeD'
 });
+var localStorage = require('localStorage');
 
 var taak = function() {
     this.get = function (streamnaam, callback2) {
@@ -85,27 +86,30 @@ var taak = function() {
 
         },
         this.update = function (taaknaam, details, callback) {
+					let laatsteElem;
             this.get(taaknaam, function (taken) {
-                if (taken[taken.length-1].schuldhebbende != details.schuldhebbende && taken[taken.length-1].schuldhebbende != '') {
+							laatsteElem = taken.length-1;
+                if ( (taken[laatsteElem].schuldhebbende != details.schuldhebbende) && (taken[laatsteElem].schuldhebbende != '') ) {
                     multichain.grant({
                         addresses: details.schuldhebbende,
                         permissions: taaknaam + '.write'
                     }, (err, info) => {
                         if (err) console.log(err);
+												updateTaak(taaknaam, details, taken[laatsteElem]);
                     });
                     multichain.revoke({
-                        addresses: taken[taken.length - 1].schuldhebbende,
+                        addresses: taken[laatsteElem].schuldhebbende,
                         permissions: taaknaam + '.write'
                     }, (err, info) => {
                         if (err) console.log(err);
                     });
-                    this.updateTaak(taaknaam, details, taken[taken.length]);
-                }else if(taken[taken.length-1].schuldhebbende != details.schuldhebbende && taken[taken.length-1].schuldhebbende == '') {
+                }else if( (taken[laatsteElem].schuldhebbende != details.schuldhebbende)  && (taken[laatsteElem].schuldhebbende == '') ) {
                     multichain.grant({
                         addresses: details.schuldhebbende,
                         permissions: taaknaam + '.write'
                     }, (err, info) => {
                         if (err) console.log(err);
+												updateTaak(taaknaam, details, taken[laatsteElem]);
                     });
 				}
             });
@@ -118,16 +122,25 @@ var taak = function() {
 
     function updateTaak(taaknaam, details, oudetaak){
         var newdetails = {};
+						multichain.listPermissions({permissions: taaknaam + '.*'}, (err, permissions) => {
+							if(err) console.log(err);
+							console.log(permissions);
+						});
 
+			console.log(oudetaak);
+			  Object.keys(details).forEach(function(key, index) {	
+					details[key]=strcpyreplace(oudetaak[key], details[key]);
+					console.log('O(' + key + '):' + oudetaak[key]);
+					console.log('N(' + key + '):' + details[key]);
+				});
         newdetails = new Buffer(JSON.stringify(details)).toString("hex");
         multichain.publishFrom({
-            from: taak.user,
+            from: localStorage.getItem('Walletadresgemeente'),
             key: "",
-            stream: taak.naam,
-            data: details
+            stream: taaknaam,
+            data: newdetails
         }, (err, item) => {
-            if (err) console.log(JSON.stringify(err));
-            callback();
+						if (err) console.log(JSON.stringify(err));
         });
 	}
 
@@ -149,6 +162,12 @@ var taak = function() {
         return finishedTaak;
     }
 
+	  function strcpyreplace(oud, nieuw) {
+			if(oud != nieuw && nieuw.trim() != '')
+				return nieuw;
+			else 
+				return oud;
+		}
     function vormTaak(data) {
         let _taak = {};
         _taak.schuldhebbende = data.schuldhebbende;
