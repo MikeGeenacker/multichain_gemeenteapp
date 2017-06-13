@@ -7,12 +7,13 @@ var multichain = require("multichain-node")({
     user: "multichainrpc",
     pass: "uPc6civWyGanmrmAgn3Tn9pPgYR3noMQt9nPMun9GeD"
 });
+var localStorage = require('localStorage');
 
 
 /*GET stream names*/
 router.get('/', function(req, res, next) {
 	var t = new taak();
-	t.getVoorSchuldhebbende('19JtqqH42k2J64ei41f3SYHRoCyiTDGpJH6Pei', function(taken) {
+	t.getVoorSchuldhebbende(localStorage.getItem('Walletadres') ,function(taken) {
 		res.render('taken/takenLijstSchuldhebbende', {title: 'Taken Overzicht Schuldhebbende', nameList: taken});
 	});
 });

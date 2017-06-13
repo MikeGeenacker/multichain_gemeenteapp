@@ -6,14 +6,14 @@ var taak = require('../../objects/taak')
 router.get('/', function(req, res, next) {
   	var t = new taak();
   	var details = {
-  		schuldhebbende: '19JtqqH42k2J64ei41f3SYHRoCyiTDGpJH6Pei',
+  		schuldhebbende: '1T4ip6sfhjHcBDRcWKEcoCqZZWKUpcZTM4KPH4',
     	beschrijving:"VEGEN!",
 			beloning:"10",
 			looptijd:"2",
 			status:"toegewezen",
 			voortgang:"0"
   	};
-	t.update('Taak 32', details, function(taken) {
+	t.update('Buurtfeest', details, function(taken) {
 		res.send('updated');
 	});
 });

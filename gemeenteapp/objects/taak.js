@@ -11,19 +11,26 @@ var localStorage = require('localStorage');
 var taak = function() {
 	this.getVoorSchuldhebbende = function(schuldhebbende_adr, callback) {
 		var streamsVanSchuldhebbende = [];
+		console.log(schuldhebbende_adr);
 		multichain.listStreams((err, streams) => {
 			if(err) console.log(err);
-			console.log(streams);
+			// console.log(streams);
 			for(let i =0; i < streams.length; i++) {
-				this.get(streams[i].name, function(taken) {
-					let nieuwsteTaak = taken[taken.length-1];
-					if(nieuwsteTaak.schulhebbende == schuldhebbende_adr) 
-						streamsVanSchuldhebbende.push(streams[i]);
-				});
+				if(streams[i].name == 'root'){
+					console.log('root');
+				}
+				if(streams[i].name != 'root'){
+					this.get(streams[i].name, function(taken) {
+						let nieuwsteTaak = taken[taken.length-1];
+						if(nieuwsteTaak.schulhebbende == schuldhebbende_adr)
+							streamsVanSchuldhebbende.push(streams[i]);
+					});
+				}
 			}
+			// console.log(streamsVanSchuldhebbende);
 			callback(streamsVanSchuldhebbende);
 		});
-		
+
 	},
 
     this.get = function (streamnaam, callback2) {
