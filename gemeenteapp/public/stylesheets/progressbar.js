@@ -58,3 +58,7 @@ window.addEventListener('load', function() {
     replay.addEventListener('click', releaseCircles);
 
 })
+
+function goBack() {
+    window.history.back();
+}

@@ -1,0 +1,31 @@
+include ./includes/gemeente.pug
+	.container.theme-showcase(role='main')
+		// Main jumbotron for a primary marketing message or call to action
+		.page-header
+			div
+				h1
+
+					| Taak aanmaken
+					.pull-right
+						button.btn.btn-default(onclick='goBack()') Terug
+
+		.row
+			.col-md-6
+				form(method='POST' action='/gemeente/taakAanmaken')
+					div.form-group
+						label(for='naam') Naam*
+						input#naam.form-control(type='text', placeholder='Taaknaam' name='naam')
+					div.form-group
+						label(for='beschrijving') Beschrijving*
+						textarea#beschrijving.form-control(placeholder='Typ hier een korte beschrijving' name='beschrijving')
+					div.form-group
+						label(for='beloning') Beloning*
+						input#beloning.form-control(type='text', placeholder='100' name='beloning')
+					div.form-group
+						label(for='looptijd') Looptijd*
+						input#looptijd.form-control(type='text', placeholder='Tijd in dagen' name='looptijd')
+					div.form-group
+						label(for='schuldhebbende') Schuldhebbende
+						input#schuldhebbende.form-control(type='text', placeholder='Adres' name='schuldhebbende')
+					button.btn.btn-primary(type='submit') Taak aanmaken
+include ./includes/footer.pug

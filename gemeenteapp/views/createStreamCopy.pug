@@ -16,66 +16,40 @@ block body
                 // Collect the nav links, forms, and other content for toggling
                 #bs-example-navbar-collapse-1.collapse.navbar-collapse
                     ul.nav.navbar-nav
+                        li.active
+                            a(href='/')
+                                | Home
+                                span.sr-only (current)
                         li.dropdown
                             a.dropdown-toggle(href='streams', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
                                 | Stream
                                 span.caret
                             ul.dropdown-menu
                                 li
-                                    a(href='/createStream') Stream aanmaken
+                                    a(href='/gemeente/createStream') Stream aanmaken
                                 li
-                                    a(href='/stream') Streams bekijken
-
-                        li.dropdown.active
+                                    a(href='#') Streams bekijken
+                        li.dropdown
                             a.dropdown-toggle(href='streams', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
                                 | Taken
                                 span.caret
                             ul.dropdown-menu
                                 li
                                     a(href='#') Taak aanmaken
-                                li.active
-                                    a(href='/gemeente/takenBekijken') Taken bekijken
-                                span.sr-only (current)
-                        span.sr-only (current)
-                    ul.nav.navbar-nav.navbar-right
-                        li
-                            a(href='/') Home
-                        li.active
-                            a(href='/gemeente') Gemeente
-                        span.sr-only (current)
-                        li
-                            a(href='/schuldhebbende') Schuldhebbende
+                                li
+                                    a(href='#') Taken bekijken
 
         .container.theme-showcase(role='main')
             // Main jumbotron for a primary marketing message or call to action
             .page-header
                 h1
-                    | SocialCoin | Taken detail: Tuin schoffelen
+                    | SocialCoin | Steam aanmaken
             .row
                 .col-md-7
-                    form(method='post' action='/createStream')
+                    form(method='POST', action='/createStream')
                         .input-group
-                            input.form-control(type='text', placeholder='Stream', name='name')
+                            input.form-control(type='text')
                             span.input-group-btn
                                 button.btn.btn-default(type='submit') Stream aanmaken
-        footer.stickyfooter
-            .container
-                .row.footertekst
-                    .col-md-4
-                        p © SocialCoin / ISE-Projectgroep9
-                    .col-md-4
-                        ul.footeropsomming
-                            li
-                                strong Over SocialCoin
-                            li
-                                a(href='http://socialcoin.nl', target='_blank') SocialCoin
-                            li
-                                a(href='http://socialcoin.nl', target='_blank') Doel
-                    .col-md-4
-                        ul.footeropsomming
-                            li
-                                strong Over ISE-Projectgroep 9
-                            li
-                                a(href='http://socialcoin.nl', target='_blank') De Projectgroep
-                            li
-                                a(href='http://socialcoin.nl', target='_blank') De Projectgroep
+                        // /input-group
+

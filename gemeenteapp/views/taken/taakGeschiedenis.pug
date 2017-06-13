@@ -1,0 +1,31 @@
+include ../includes/gemeente.pug
+        .container.theme-showcase(role='main')
+            // Main jumbotron for a primary marketing message or call to action
+            .page-header
+                h1
+                    | Geschiedenis #{huidigeTaak}
+                    .pull-right
+                        button.btn.btn-default(onclick='goBack()') Terug
+
+            .row
+                .col-md-6
+                    ul.list-group
+                        each val in opdrachten
+                            li.list-group-item
+                                strong Schuldhebbende:
+                                |  #{val.schuldhebbende}
+                            li.list-group-item
+                                strong Beloning:
+                                |  #{val.beloning}
+                            li.list-group-item
+                                strong Status:
+                                |  #{val.status}
+                            li.list-group-item
+                                strong Voortgang:
+                                |  #{val.voortgang}
+                            li.list-group-item
+                                strong Datum:
+                                |  #{val.timestamp}
+                            br
+                            br
+include ../includes/footer.pug

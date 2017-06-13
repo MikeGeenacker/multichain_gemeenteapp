@@ -1,40 +1,4 @@
-extends ../node_modules/pug-bootstrap/_bootstrap.pug
-
-block body
-    #wrap
-        nav.navbar.navbar-default
-            .container-fluid
-                // Brand and toggle get grouped for better mobile display
-                .navbar-header
-                    button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1', aria-expanded='false')
-                        span.sr-only Toggle navigation
-                        span.icon-bar
-                        span.icon-bar
-                        span.icon-bar
-                    a.navbar-brand(href='#')
-                        img.navar-brand-logo(alt='Brand', src='http://maba-online.nl/socialcoin/logosocialcoin.png')
-                // Collect the nav links, forms, and other content for toggling
-                #bs-example-navbar-collapse-1.collapse.navbar-collapse
-                    ul.nav.navbar-nav
-
-                    ul.nav.navbar-nav.navbar-right
-                        li.active
-                            a(href='/')
-                                | Home
-                                span.sr-only (current)
-                        li
-                            a(href='/gemeente') Gemeente
-                        li
-                            if walletadres != null
-                                a(href='/schuldhebbende') Schuldhebbende
-                            else
-                                a(type='button', data-toggle='modal', data-target='#myModal') Schuldhebbende
-
-                // /.navbar-collapse
-            // /.container-fluid
-
-
-
+include includes/home.pug
     .container.theme-showcase(role='main')
         // Main jumbotron for a primary marketing message or call to action
         .page-header
@@ -45,15 +9,18 @@ block body
                 h3
                     | Maak uw keuze
                 .col-md-6
-                    a.btn.btn-lg.btn-primary.maakuwkeuze(href='/gemeente') Gemeente
+                    if walletadres != null
+                        a.btn.btn-lg.btn-primary.maakuwkeuze(href='/gemeente') gemeente
+                    else
+                        button.btn.btn-primary.btn-lg.maakuwkeuze(type='button', data-toggle='modal', data-target='#gemeente') Gemeente
                 .col-md-6
                     if walletadres != null
                         a.btn.btn-lg.btn-primary.maakuwkeuze(href='/schuldhebbende') Schuldhebbende
                     else
-                        button.btn.btn-primary.btn-lg.maakuwkeuze(type='button', data-toggle='modal', data-target='#myModal') Schuldhebbende
+                        button.btn.btn-primary.btn-lg.maakuwkeuze(type='button', data-toggle='modal', data-target='#schuldhebbende') Schuldhebbende
 
                 // Modal
-                #myModal.modal.fade(role='dialog')
+                #schuldhebbende.modal.fade(role='dialog')
                     .modal-dialog
                         // Modal content
                         .modal-content
@@ -68,40 +35,22 @@ block body
                                     div.modal-footer
                                         button.btn.btn-primary(type='button', data-dismiss='modal') Annuleren
                                         button.btn.btn-primary(type='submit') Opslaan
+                #gemeente.modal.fade(role='dialog')
+                    .modal-dialog
+                        // Modal content
+                        .modal-content
+                            .modal-header
+                                button.close(type='button', data-dismiss='modal') ×
+                                h4.modal-title Gemeente
+                            .modal-body
+                                form(method='POST' action='/gemeente')
+                                    div.form-group
+                                        label(for='address') Wallet:
+                                        input#address.form-control(type='text', placeholder='Adres' name='walletaddressgemeente')
+                                    div.modal-footer
+                                        button.btn.btn-primary(type='button', data-dismiss='modal') Annuleren
+                                        button.btn.btn-primary(type='submit') Opslaan
+
             .col-md-5
-                h3
-                    | Nieuws
-                .media
-                    .media-left
-                        span.glyphicon.glyphicon-th-large
-                    .media-body
-                        h4.media-heading
-                            strong Nieuwe taak:
-                            |  Arnhem
-                        p
-                            span.glyphicon.glyphicon-minus Test
-                            br
-                            span.glyphicon.glyphicon-time 10-juli-2017
-
-
-    footer.stickyfooter
-        .container
-            .row.footertekst
-                .col-md-4
-                    p © SocialCoin / ISE-Projectgroep9
-                .col-md-4
-                    ul.footeropsomming
-                        li
-                            strong Over SocialCoin
-                        li
-                            a(href='http://socialcoin.nl', target='_blank') SocialCoin
-                        li
-                            a(href='http://socialcoin.nl', target='_blank') Doel
-                .col-md-4
-                    ul.footeropsomming
-                        li
-                            strong Over ISE-Projectgroep 9
-                        li
-                            a(href='http://socialcoin.nl', target='_blank') De Projectgroep
-                        li
-                            a(href='http://socialcoin.nl', target='_blank') De Projectgroep
+                include includes/news.pug
+include includes/footer.pug

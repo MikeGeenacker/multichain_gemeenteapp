@@ -1,0 +1,17 @@
+include ./includes/gemeente.pug
+        .container.theme-showcase(role='main')
+            // Main jumbotron for a primary marketing message or call to action
+            .page-header
+                h1
+                    | SocialCoin | Wallets
+                    .pull-right
+                        button.btn.btn-default(onclick='goBack()') Terug
+            .row
+                .col-md-7
+                    ul.list-group
+                    each val in wallets
+                        li.list-group-item
+                            a(href='/gemeente/walletDetails?address='+ val.address) #{val.address}
+                    else
+                        li.list-group-item Er zijn momenteel geen wallets beschikbaar!
+include ./includes/footer.pug

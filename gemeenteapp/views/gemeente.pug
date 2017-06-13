@@ -1,54 +1,4 @@
-extends ../node_modules/pug-bootstrap/_bootstrap.pug
-
-block body
-    #wrap
-        nav.navbar.navbar-default
-            .container-fluid
-                // Brand and toggle get grouped for better mobile display
-                .navbar-header
-                    button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1', aria-expanded='false')
-                        span.sr-only Toggle navigation
-                        span.icon-bar
-                        span.icon-bar
-                        span.icon-bar
-                    a.navbar-brand(href='#')
-                        img.navar-brand-logo(alt='Brand', src='http://maba-online.nl/socialcoin/logosocialcoin.png')
-                // Collect the nav links, forms, and other content for toggling
-                #bs-example-navbar-collapse-1.collapse.navbar-collapse
-                    ul.nav.navbar-nav
-                        li.dropdown
-                            a.dropdown-toggle(href='streams', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
-                                | Stream
-                                span.caret
-                            ul.dropdown-menu
-                                li
-                                    a(href='/createStream') Stream aanmaken
-                                li
-                                    a(href='/stream') Streams bekijken
-                        li.dropdown
-                            a.dropdown-toggle(href='streams', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
-                                | Taken
-                                span.caret
-                            ul.dropdown-menu
-                                li
-                                    a(href='#') Taak aanmaken
-                                li
-                                    a(href='/gemeente/takenBekijken') Taken bekijken
-                    ul.nav.navbar-nav.navbar-right
-                        li
-                            a(href='/') Home
-                        li.active
-                            a(href='/gemeente') Gemeente
-                        span.sr-only (current)
-                        li
-                            a(href='/schuldhebbende') Schuldhebbende
-
-
-                // /.navbar-collapse
-            // /.container-fluid
-
-
-
+include includes/gemeente.pug
     .container.theme-showcase(role='main')
         // Main jumbotron for a primary marketing message or call to action
         .page-header
@@ -57,41 +7,17 @@ block body
         .row
             .col-md-7
                 h3
-                    | Streams
+                    | Wallet
                 .col-md-3
-                    a.btn.btn-lg.btn-primary.maakuwkeuze(href='/createStream') Stream aanmaken
+                    a.btn.btn-lg.btn-primary.maakuwkeuze(href='/gemeente/wallets') Wallets bekijken
                 .col-md-3
-                a.btn.btn-lg.btn-primary.maakuwkeuze(href='/stream') Streams bekijken
+                a.btn.btn-lg.btn-primary.maakuwkeuze(href='/gemeente/createWallet') Wallet aanmaken
                 h3
                     | Taken
                 .col-md-3
-                    a.btn.btn-lg.btn-primary.maakuwkeuze(href='#') Taak aanmaken
+                    a.btn.btn-lg.btn-primary.maakuwkeuze(href='/gemeente/taakAanmaken') Taak aanmaken
                 .col-md-3
-                a.btn.btn-lg.btn-primary.maakuwkeuze(href='#') Taken bekijken
+                a.btn.btn-lg.btn-primary.maakuwkeuze(href='/gemeente/taken') Taken bekijken
             .col-md-5
-                h3
-                    | Nieuws
-                script(type='text/javascript', src='https://feed.mikle.com/js/fw-loader.js', data-fw-param='31938/')
-                // end feedwind code
-
-    footer.stickyfooter
-        .container
-            .row.footertekst
-                .col-md-4
-                    p © SocialCoin / ISE-Projectgroep9
-                .col-md-4
-                    ul.footeropsomming
-                        li
-                            strong Over SocialCoin
-                        li
-                            a(href='http://socialcoin.nl', target='_blank') SocialCoin
-                        li
-                            a(href='http://socialcoin.nl', target='_blank') Doel
-                .col-md-4
-                    ul.footeropsomming
-                        li
-                            strong Over ISE-Projectgroep 9
-                        li
-                            a(href='http://socialcoin.nl', target='_blank') De Projectgroep
-                        li
-                            a(href='http://socialcoin.nl', target='_blank') De Projectgroep
+                include includes/news.pug
+include includes/footer.pug

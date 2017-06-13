@@ -1,0 +1,42 @@
+include ../includes/schuldhebbende.pug
+    .container.theme-showcase(role='main')
+      // Main jumbotron for a primary marketing message or call to action
+      .page-header
+        h1
+          | SocialCoin | Saldo opvragen
+          .pull-right
+            button.btn.btn-default(onclick='goBack()') Terug
+      .row
+        .col-md-6
+            ul.list-group
+              li.list-group-item
+                span
+                strong
+                  |     Wallet
+                i
+                  |     #{walletaddress}#{err}
+                li.list-group-item
+                  span
+                  strong
+                    |     Saldo
+                  i
+                    |     SC #{quantity}#{saldo}
+
+
+
+
+              //P Wallet #{walletaddress} <b> bevat #{quantity} #{asset}
+              //P Wallet #{percentage} <b> bevat #{quantity} #{asset}
+        .col-md-6
+          .circle-wrapper
+            .svg.svg1.col-md-6.col-sm-6(data-value=''+ parseInt(percentage) +'', data-lang='Afgelost')
+              svg(width='250px', height='250px', viewbox='0 0 80 80')
+                path.load-bg.cir1(d='M40,10C57.351,10,71,23.649,71,40.5S57.351,71,40.5,71 S10,57.351,10,40.5S23.649,10,40.5,10z')
+                path#load-line1.load-circle(style='stroke-dashoffset: 192.6168975830078px; stroke-dasharray: 192.6168975830078px;', d='M40,10C57.351,10,71,23.649,71,40.5S57.351,71,40.5,71 S10,57.351,10,40.5S23.649,10,40.5,10z')
+          //else
+            P  #{err}
+include ../includes/footer.pug
+
+
+
+
