@@ -25,6 +25,7 @@ var walletLabel = require('./routes/walletLabel');
 var taakAanmaken = require('./routes/taakAanmaken');
 
 var saldoOpvragen = require('./routes/schuldhebbende/saldoOpvragen');
+var takenOpvragen = require('./routes/taken/takenLijstSchuldhebbende');
 
 var takenOverzicht = require('./routes/taken/takenOverzicht');
 var taakGeschiedenis = require('./routes/taken/taakGeschiedenis');
@@ -72,6 +73,7 @@ app.use('/gemeente/takenBekijken/taakDetails', taakDetails);
 app.use('/gemeente/taakAanmaken', taakAanmaken);
 
 app.use('/schuldhebbende/saldo', saldoOpvragen);
+app.use('/schuldhebbende/taken', takenOpvragen);
 
 app.use('/gemeente/taken', takenOverzicht);
 app.use('/gemeente/taken/geschiedenis', taakGeschiedenis);

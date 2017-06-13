@@ -9,9 +9,26 @@ var multichain = require('multichain-node') ({
 var localStorage = require('localStorage');
 
 var taak = function() {
+	this.getVoorSchuldhebbende = function(schuldhebbende_adr, callback) {
+		var streamsVanSchuldhebbende = [];
+		multichain.listStreams((err, streams) => {
+			if(err) console.log(err);
+			console.log(streams);
+			for(let i =0; i < streams.length; i++) {
+				this.get(streams[i].name, function(taken) {
+					let nieuwsteTaak = taken[taken.length-1];
+					if(nieuwsteTaak.schulhebbende == schuldhebbende_adr) 
+						streamsVanSchuldhebbende.push(streams[i]);
+				});
+			}
+			callback(streamsVanSchuldhebbende);
+		});
+		
+	},
+
     this.get = function (streamnaam, callback2) {
         multichain.listStreamItems({stream: streamnaam, verbose: false}, (err, items) => {
-            if (err)throw err;
+            if (err)console.log(err);
 
             var taken = [];
             async.forEach(items, function (item, callback) {
@@ -126,12 +143,10 @@ var taak = function() {
 							if(err) console.log(err);
 							console.log(permissions);
 						});
-
-			console.log(oudetaak);
 			  Object.keys(details).forEach(function(key, index) {	
 					details[key]=strcpyreplace(oudetaak[key], details[key]);
-					console.log('O(' + key + '):' + oudetaak[key]);
-					console.log('N(' + key + '):' + details[key]);
+				//	console.log('O(' + key + '):' + oudetaak[key]);
+				//	console.log('N(' + key + '):' + details[key]);
 				});
         newdetails = new Buffer(JSON.stringify(details)).toString("hex");
         multichain.publishFrom({
