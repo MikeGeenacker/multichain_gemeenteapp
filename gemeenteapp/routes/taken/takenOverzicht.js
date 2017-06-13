@@ -18,4 +18,19 @@ router.get('/', function(req, res, next) {
     })
 });
 
+router.post('/', function(req, res, next) {
+  multichain.subscribe({stream : req.body.name}, (err) =>{
+    if(err){
+      console.log(err);
+      throw err;
+    }
+    multichain.listStreams((err, streams) => {
+        if(err) {
+            throw err;
+        }
+        res.render('taken/takenOverzicht', {title: 'Takenoverzicht', nameList: streams});
+    })
+  })
+});
+
 module.exports = router;
