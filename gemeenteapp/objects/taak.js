@@ -181,6 +181,7 @@ var taak = function() {
                 finishedTaak.status = taakHistoryArr[i].status || finishedTaak.status;
                 finishedTaak.beschrijving = taakHistoryArr[i].beschrijving || finishedTaak.beschrijving;
                 finishedTaak.voortgang = taakHistoryArr[i].voortgang || finishedTaak.voortgang;
+                finishedTaak.looptijd = taakHistoryArr[i].looptijd || finishedTaak.looptijd;
                 // finishedTaak.timestamp = taakHistoryArr[i].timestamp || finishedTaak.timestamp;
                 if(taakHistoryArr[i].timestamp - taakHistoryArr[i-1].timestamp > 0) {
                     finishedTaak.timestamp = taakHistoryArr[i].timestamp;
@@ -210,6 +211,7 @@ var taak = function() {
         _taak.status = data.status;
         _taak.voortgang = data.voortgang;
         _taak.timestamp = data.timestamp;
+        _taak.looptijd = data.looptijd;
         return _taak;
     }
 }
