@@ -15,7 +15,7 @@ router.get('/', function(req, res, next) {
             throw err;
         }
         res.render('wallets', {title: 'Streams', wallets: addresses});
-    })
+    });
 });
 
 module.exports = router;

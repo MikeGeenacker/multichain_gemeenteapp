@@ -22,7 +22,6 @@ router.post('/', function (req, res) {
         if (err) {
             console.log(err);
             res.render('transactieAanmaken', {transactionTry : true, result: false});
-            // throw err;
         }
         res.render('transactieAanmaken', {
             transactionTry: true,
@@ -32,7 +31,7 @@ router.post('/', function (req, res) {
             amount: req.body.amountToSend
         });
 
-    })
+    });
 });
 
 module.exports = router;

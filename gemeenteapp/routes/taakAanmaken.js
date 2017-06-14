@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
 
 router.post('/', function(req, res) {
 	var t = new taak();
-	req.body.user = '1R8BVnSpzEZBssPSmbD1aAzKWw2jDBB1t5gEKk'
+	req.body.user = localStorage.getItem('Walletadres');
 	t.create(req.body, function(taak) {
         res.redirect('/gemeente/taken/details?name=' + taak.naam);
 	});

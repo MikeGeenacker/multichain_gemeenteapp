@@ -1,31 +1,29 @@
-var express = require('express');
-var router = express.Router();
-var taak = require('../../objects/taak')
+const express = require('express');
+const router = express.Router();
+const Taak = require('../../objects/taak');
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-    var t = new taak();
-    var linkje = req.query.name;
-    t.get(linkje, function(taken) {
-        var takenLengte = taken.length - 1;
-        res.render('taakAanpassen', {opdrachten: taken[takenLengte], huidigeTaak: linkje});
+router.get('/', function (req, res) {
+    let taak = new Taak();
+    taak.get(req.query.name, function (taken) {
+        res.render('taakAanpassen', {opdrachten: taken[taken.length - 1], huidigeTaak: req.query.name});
     });
 
 });
 
-router.post('/', function(req, res, next) {
-  	var t = new taak();
-  	var details = {
-  		schuldhebbende: req.body.schuldhebbende,
-    	beschrijving: req.body.beschrijving,
-			beloning: req.body.beloning,
-			looptijd: req.body.looptijd,
-			status: req.body.statustaak,
-			voortgang: req.body.voortgang
-  	};
-	t.update(req.body.naam, details, function(taken) {
-		res.redirect('/gemeente/taken/details?name=' + req.body.naam);
-	});
+router.post('/', function (req, res) {
+    let taak = new Taak();
+    let details = {
+        schuldhebbende: req.body.schuldhebbende,
+        beschrijving: req.body.beschrijving,
+        beloning: req.body.beloning,
+        looptijd: req.body.looptijd,
+        status: req.body.statustaak,
+        voortgang: req.body.voortgang
+    };
+    taak.update(req.body.naam, details, function (taken) {
+        res.redirect('/gemeente/taken/details?name=' + req.body.naam);
+    });
 });
 
 module.exports = router;

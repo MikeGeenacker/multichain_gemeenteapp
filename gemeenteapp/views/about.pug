@@ -1,6 +1,13 @@
-extends layout
+include includes/gemeente.pug
 
-block content
-  h1= title
-  p Welkom bij #{chainname}
-  p Versie #{version}
+    .container.theme-showcase(role='main')
+        // Main jumbotron for a primary marketing message or call to action
+        .page-header
+            h1
+                | #{chainname}
+        .row
+            .col-md-7
+                h3
+                    | Versie #{version}
+
+include includes/footer.pug
