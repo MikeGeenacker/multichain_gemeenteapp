@@ -1,0 +1,35 @@
+include ./includes/gemeente.pug
+  .container.theme-showcase(role='main')
+    .page-header
+      div
+        h1
+          | Transactie maken
+          .pull-right
+            button.btn.btn-default(onclick='goBack()') Terug
+    .row
+      .col-md-6
+        form(method='POST' action='/transactieAanmaken')
+          div.form-group
+            label(for='senderAddress') Adres afzender:
+            input#senderAddress.form-control(type='text', placeholder='Het bedrag zal van dit adres afgehaald worden' name='senderAddress')
+          div.form-group
+            label(for='receiverAddress') Adres ontvanger:
+            input#receiverAddress.form-control(type='text', placeholder='Het bedrag zal worden bijgeschreven op dit adres' name='receiverAddress')
+          div.form-group
+            label(for='amountToSend') Aantal coins te versturen:
+            input#amountToSend.form-control(type='integer', placeholder='Bedrag van de transactie' name='amountToSend')
+          button.btn.btn-primary(type='submit') Transactie aanmaken
+    .row
+      .col-md-6
+        if transactionTry == true
+          h3
+            | Transaction result
+          if result
+            p Transactie aangemaakt,
+            p #{amount} SocialCoins verzonden
+            p van: #{sender}
+            p naar: #{receiver}
+          else
+            p Transactie mislukt,
+            p Controleer de adressen, of het bedrag wel beschikbaar is bij het afzender adres en of het afzender adres verstuur permissies heeft.
+include ./includes/footer.pug

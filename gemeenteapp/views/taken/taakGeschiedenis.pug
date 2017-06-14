@@ -7,25 +7,32 @@ include ../includes/gemeente.pug
                     .pull-right
                         button.btn.btn-default(onclick='goBack()') Terug
 
+
             .row
                 .col-md-6
                     ul.list-group
                         each val in opdrachten
                             li.list-group-item
+                                strong Taaknaam:
+                                |  #{huidigeTaak}
+                            li.list-group-item
+                                strong Beschrijving:
+                                |  #{val.beschrijving}
+                            li.list-group-item
                                 strong Schuldhebbende:
                                 |  #{val.schuldhebbende}
                             li.list-group-item
-                                stong Beschrijving:
-                                |  #{val.beschrijving}
-                            li.list-group-item
                                 strong Beloning:
-                                |  #{val.beloning}
+                                |  #{val.beloning} SocialCoin
+                            li.list-group-item
+                                strong Looptijd:
+                                |  #{val.looptijd} dagen
+                            li.list-group-item
+                                strong Voortgang:
+                                |  #{val.voortgang} %
                             li.list-group-item
                                 strong Status:
                                 |  #{val.status}
-                            li.list-group-item
-                                strong Voortgang:
-                                |  #{val.voortgang}
                             li.list-group-item
                                 strong Datum:
                                 |  #{val.timestamp}

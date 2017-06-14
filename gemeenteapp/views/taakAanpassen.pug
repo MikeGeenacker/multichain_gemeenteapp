@@ -14,7 +14,7 @@ include ./includes/gemeente.pug
         form(method='POST' action='/gemeente/taken/aanpassen')
           div.form-group
             label(for='naam') Naam*
-            input#naam.form-control(type='text', placeholder='Taaknaam' name='naam' value=huidigeTaak)
+            input#naam.form-control(type='text', placeholder='Taaknaam', name='naam', value=huidigeTaak, readonly='')
           div.form-group
             label(for='beschrijving') Beschrijving*
             textarea#beschrijving.form-control(placeholder='Typ hier een korte beschrijving' name='beschrijving')
@@ -34,6 +34,6 @@ include ./includes/gemeente.pug
           div.form-group
             label(for='schuldhebbende') Schuldhebbende
             input#schuldhebbende.form-control(type='text', placeholder='Adres' name='schuldhebbende' value=opdrachten.schuldhebbende)
-          button.btn.btn-primary(type='submit') Taak aanmaken
+          button.btn.btn-primary(type='submit') Aanpassen
 
 include ./includes/footer.pug

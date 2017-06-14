@@ -25,16 +25,16 @@ include ../includes/gemeente.pug
                             |  #{opdrachten.schuldhebbende}
                         li.list-group-item
                             strong Beloning:
-                            |  #{opdrachten.beloning}
+                            |  #{opdrachten.beloning} SocialCoin
+                        li.list-group-item
+                            strong Looptijd:
+                            |  #{opdrachten.looptijd} dagen
+                        li.list-group-item
+                            strong Voortgang:
+                            |  #{opdrachten.voortgang} %
                         li.list-group-item
                             strong Status:
                             |  #{opdrachten.status}
-                        li.list-group-item
-                            strong Looptijd (D):
-                            |  #{opdrachten.looptijd}
-                        li.list-group-item
-                            strong Voortgang:
-                            |  #{opdrachten.voortgang}
                         li.list-group-item
                             strong Datum:
                             |  #{opdrachten.timestamp}
