@@ -9,21 +9,22 @@ const multichain = require("multichain-node")({
 
 router.get('/', function (req, res) {
 
-    res.render('transaction', {transactionTry: false});
+    res.render('transactieAanmaken', {transactionTry: false});
 });
 
 router.post('/', function (req, res) {
     multichain.sendAssetFrom({
         from: req.body.senderAddress,
         to: req.body.receiverAddress,
-        asset: 'TEST',
+        asset: 'SocialCoin',
         qty: parseInt(req.body.amountToSend)
     }, (err, sendAssetReturn) => {
         if (err) {
-            console.log(req.body);
-            throw err;
+            console.log(err);
+            res.render('transactieAanmaken', {transactionTry : true, result: false});
+            // throw err;
         }
-        res.render('transaction', {
+        res.render('transactieAanmaken', {
             transactionTry: true,
             result: sendAssetReturn,
             sender: req.body.senderAddress,

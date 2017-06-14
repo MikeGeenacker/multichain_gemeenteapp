@@ -16,7 +16,7 @@ var streamHome = require('./routes/streamsHome');
 var streamCreate = require('./routes/createStream');
 var streamDetails = require ('./routes/streamDetails');
 
-var transaction = require('./routes/transaction');
+var transactieAanmaken = require('./routes/transactieAanmaken');
 var walletBekijken = require('./routes/walletDetails');
 var wallets = require('./routes/wallets');
 var takenBekijken = require('./routes/takenBekijken');
@@ -58,7 +58,7 @@ app.use('/streamHome',streamHome);
 app.use('/createStream', streamCreate);
 app.use('/streamDetails', streamDetails);
 
-app.use('/transaction', transaction);
+app.use('/transactieAanmaken', transactieAanmaken);
 app.use('/walletBekijken', walletBekijken);
 app.use('/gemeente/takenBekijken', takenBekijken);
 app.use('/gemeente/takenBekijken/taakDetails', taakDetails);
