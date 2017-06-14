@@ -7,11 +7,9 @@ include ../includes/gemeente.pug
 
                         | Taak #{huidigeTaak}
                         .pull-right
-                            button.btn.btn-default(onclick='goBack()') Terug
-
-                .text-right
-                    a(href='/gemeente/taken/geschiedenis?name='+ huidigeTaak) Geschiedenis taak bekijken
-                    a(href='/gemeente/taken/aanpassen?name='+ huidigeTaak) Taak aanpassen
+                            a.btn.btn-primary.btn-ruimte(href='/gemeente/taken/geschiedenis?name='+ huidigeTaak, role='button') Geschiedenis
+                            a.btn.btn-primary.btn-ruimte(href='/gemeente/taken/aanpassen?name='+ huidigeTaak, role='button') Aanpassen
+                            button.btn.btn-default.btn-ruimte(onclick='goBack()') Terug
 
             .row
                 .col-md-6
